@@ -2,7 +2,6 @@
 
 import { Modal } from '../ui/Modal'
 import { Button } from '../ui/Button'
-import { Sparkles } from 'lucide-react'
 
 interface CompatibilityModalProps {
   open: boolean
@@ -14,49 +13,37 @@ export function CompatibilityModal({ open, onClose, endorsedCount }: Compatibili
   return (
     <Modal open={open} onClose={onClose}>
       <div className="text-center space-y-4">
-        <div className="w-16 h-16 rounded-full bg-seno-blue-light flex items-center justify-center mx-auto">
-          <Sparkles size={28} className="text-seno-blue" />
+        <div className="text-5xl animate-gold-glow inline-block rounded-full w-20 h-20 flex items-center justify-center bg-seno-gold-tint border border-seno-border-gold mx-auto">
+          ✦
         </div>
 
         <div>
-          <h2 className="text-xl font-black text-seno-dark">Networking Opportunity Identified</h2>
-          <Badge className="mt-2 inline-flex" />
+          <h2 className="text-xl font-black text-gradient-gold">Networking Opportunity Identified</h2>
+          <span className="inline-flex items-center gap-1 mt-2 px-3 py-1 rounded-full text-xs font-bold bg-seno-green/15 text-green-400 border border-green-800/30">
+            ✓ Compatibility Threshold Exceeded
+          </span>
         </div>
 
-        <div className="bg-seno-surface rounded-xl p-4 text-sm text-seno-dark space-y-2 text-left">
+        <div className="bg-seno-card-2 rounded-2xl p-4 text-sm text-seno-muted text-left space-y-2 border border-seno-border">
           <p>
-            You and <strong>Seno</strong> have endorsed{' '}
-            <strong className="text-seno-blue">{endorsedCount} overlapping competencies</strong>.
+            You and <span className="text-seno-gold font-bold">Seno</span> have endorsed{' '}
+            <span className="text-seno-text font-bold">{endorsedCount} overlapping competencies</span>.
           </p>
-          <p className="text-seno-muted">
-            Our algorithm estimates a <strong>87% yearning alignment</strong> based on your recent endorsement history.
-          </p>
+          <p>Our algorithm estimates <span className="text-seno-gold font-bold">87% yearning alignment</span> — statistically unprecedented.</p>
         </div>
 
-        <div className="bg-seno-blue-pale border border-seno-blue-light rounded-xl p-4 text-left">
-          <p className="text-xs font-bold text-seno-blue uppercase tracking-wide mb-1">Suggested Connection Message</p>
-          <p className="text-sm text-seno-dark italic">
+        <div className="bg-seno-gold-tint border border-seno-border-gold rounded-2xl p-4 text-left">
+          <p className="text-[10px] font-bold text-seno-gold uppercase tracking-widest mb-2">Suggested Connection Message</p>
+          <p className="text-sm text-seno-text italic">
             &ldquo;I noticed your strong background in emotionally ambiguous bass lines and felt compelled to reach out professionally.&rdquo;
           </p>
         </div>
 
         <div className="flex gap-2">
-          <Button variant="outline" className="flex-1" onClick={onClose}>
-            Defer to Next Quarter
-          </Button>
-          <Button className="flex-1" onClick={onClose}>
-            Acknowledge & Escalate
-          </Button>
+          <Button variant="outline" className="flex-1" onClick={onClose}>Defer to Next Quarter</Button>
+          <Button className="flex-1" onClick={onClose}>Acknowledge & Escalate</Button>
         </div>
       </div>
     </Modal>
-  )
-}
-
-function Badge({ className = '' }: { className?: string }) {
-  return (
-    <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-seno-green/10 text-seno-green ${className}`}>
-      ✓ Compatibility Threshold Exceeded
-    </span>
   )
 }

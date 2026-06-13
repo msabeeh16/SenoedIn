@@ -1,75 +1,122 @@
 @import "tailwindcss";
 
 @theme {
-  --color-seno-blue: #0a66c2;
-  --color-seno-blue-dark: #004182;
-  --color-seno-blue-light: #dce9f7;
-  --color-seno-blue-pale: #f0f6ff;
-  --color-seno-surface: #f3f2ef;
-  --color-seno-card: #ffffff;
-  --color-seno-border: #e0dfdb;
-  --color-seno-dark: #1c1c1c;
-  --color-seno-muted: #666666;
-  --color-seno-accent: #e9a033;
-  --color-seno-green: #057642;
-  --color-seno-red: #c0392b;
+  /* === BLACK & GOLD THEME === */
+  --color-seno-bg:          #0a0a0a;
+  --color-seno-card:        #111111;
+  --color-seno-card-2:      #1a1a1a;
+  --color-seno-border:      #2a2a2a;
+  --color-seno-border-gold: rgba(212,160,23,0.25);
+
+  /* Gold accent */
+  --color-seno-gold:        #d4a017;
+  --color-seno-gold-light:  #e8b820;
+  --color-seno-gold-dark:   #a07010;
+  --color-seno-gold-tint:   #1a1300;
+  --color-seno-gold-glow:   rgba(212,160,23,0.12);
+
+  /* Text */
+  --color-seno-text:        #f0ede4;
+  --color-seno-muted:       #888888;
+  --color-seno-dim:         #555555;
+
+  /* Keep legacy names mapped to new palette so components auto-update */
+  --color-seno-surface:     #0a0a0a;
+  --color-seno-dark:        #f0ede4;
+  --color-seno-blue:        #d4a017;
+  --color-seno-blue-dark:   #a07010;
+  --color-seno-blue-light:  #1a1300;
+  --color-seno-blue-pale:   #0d0b00;
+  --color-seno-accent:      #d4a017;
+  --color-seno-green:       #10a860;
+  --color-seno-red:         #e53e3e;
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
-body {
-  background-color: var(--color-seno-surface);
-  color: var(--color-seno-dark);
+html, body {
+  background-color: #0a0a0a;
+  color: #f0ede4;
   font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-/* Subtle scrollbar */
-::-webkit-scrollbar { width: 6px; }
+/* Prevent overscroll bounce on iOS */
+html { height: 100%; }
+body { min-height: 100%; overflow-y: auto; }
+
+/* Gold scrollbar */
+::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #aaa; }
+::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #d4a017; }
 
-/* Smooth transitions globally */
-button, a {
-  transition: opacity 0.15s ease, background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+/* Slider thumb styling */
+input[type="range"] { -webkit-appearance: none; }
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #d4a017;
+  cursor: pointer;
+  border: 2px solid #0a0a0a;
+  box-shadow: 0 0 6px rgba(212,160,23,0.5);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #d4a017;
+  cursor: pointer;
+  border: 2px solid #0a0a0a;
 }
 
-/* Card slide-in animation */
+/* Transition base */
+button, a { transition: opacity 0.15s ease, background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease; }
+
+/* Animations */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
+.animate-fade-in-up { animation: fadeInUp 0.3s ease forwards; }
 
-.animate-fade-in-up {
-  animation: fadeInUp 0.3s ease forwards;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
+.animate-fade-in { animation: fadeIn 0.25s ease forwards; }
 
-/* Swipe animations */
-@keyframes swipeLeft {
-  to { transform: translateX(-120%) rotate(-8deg); opacity: 0; }
-}
-@keyframes swipeRight {
-  to { transform: translateX(120%) rotate(8deg); opacity: 0; }
-}
+@keyframes swipeLeft  { to { transform: translateX(-130%) rotate(-10deg); opacity: 0; } }
+@keyframes swipeRight { to { transform: translateX(130%)  rotate(10deg);  opacity: 0; } }
+.animate-swipe-left  { animation: swipeLeft  0.35s cubic-bezier(0.4,0,0.2,1) forwards; }
+.animate-swipe-right { animation: swipeRight 0.35s cubic-bezier(0.4,0,0.2,1) forwards; }
 
-.animate-swipe-left { animation: swipeLeft 0.35s ease forwards; }
-.animate-swipe-right { animation: swipeRight 0.35s ease forwards; }
-
-/* Scanner animation for climbing */
-@keyframes scanLine {
-  0% { top: 0%; }
-  100% { top: 100%; }
-}
+@keyframes scanLine { 0% { top: 0%; } 100% { top: 100%; } }
 .animate-scan { animation: scanLine 1.8s ease-in-out infinite; }
 
-/* Pulse dot */
-@keyframes pulseDot {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
+@keyframes pulseDot { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 .animate-pulse-dot { animation: pulseDot 1.4s ease-in-out infinite; }
+
+@keyframes goldGlow {
+  0%, 100% { box-shadow: 0 0 8px rgba(212,160,23,0.3); }
+  50%       { box-shadow: 0 0 20px rgba(212,160,23,0.6); }
+}
+.animate-gold-glow { animation: goldGlow 2s ease-in-out infinite; }
+
+/* Gold gradient text utility */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #d4a017, #f0c040);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gold top border accent on cards */
+.gold-top-border {
+  border-top: 2px solid #d4a017;
+}

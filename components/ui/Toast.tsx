@@ -21,13 +21,11 @@ export function Toast({ message, onDismiss, duration = 3500 }: ToastProps) {
   }, [duration, onDismiss])
 
   return (
-    <div
-      className={`fixed bottom-20 md:bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2.5 bg-seno-dark text-white px-4 py-3 rounded-xl shadow-lg text-sm font-medium transition-all duration-300 ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}
-    >
-      <CheckCircle size={16} className="text-green-400 shrink-0" />
+    <div className={`fixed bottom-24 md:bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2.5 bg-seno-card border border-seno-border-gold text-seno-text px-4 py-3 rounded-2xl shadow-[0_0_20px_rgba(212,160,23,0.25)] text-sm font-medium transition-all duration-300 max-w-[90vw] ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
+      <CheckCircle size={15} className="text-seno-gold shrink-0" />
       <span>{message}</span>
-      <button onClick={onDismiss} className="ml-2 opacity-60 hover:opacity-100">
-        <X size={14} />
+      <button onClick={onDismiss} className="ml-1 text-seno-dim hover:text-seno-muted">
+        <X size={13} />
       </button>
     </div>
   )

@@ -1,15 +1,11 @@
 import { Header } from './Header'
 import { MobileNav } from './MobileNav'
 
-interface AppShellProps {
-  children: React.ReactNode
-}
-
-export function AppShell({ children }: AppShellProps) {
+export function AppShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen flex flex-col bg-seno-surface">
+    <div className="min-h-screen flex flex-col bg-seno-bg">
       <Header />
-      <main className="flex-1 pb-20 md:pb-0">
+      <main className="flex-1 pb-20 sm:pb-0">
         {children}
       </main>
       <MobileNav />

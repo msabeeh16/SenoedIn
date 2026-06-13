@@ -5,7 +5,6 @@ import { SwipeCard } from '../../components/music/SwipeCard'
 import { CompatibilityModal } from '../../components/music/CompatibilityModal'
 import { PlaylistDossier } from '../../components/music/PlaylistDossier'
 import { Toast } from '../../components/ui/Toast'
-import { Card } from '../../components/ui/Card'
 import { seedSongs, FRIEND_APPROVED_SONG_IDS } from '../../data/seed-songs'
 import { getStore } from '../../lib/storage'
 import type { Song, MusicSwipe } from '../../lib/types'
@@ -50,40 +49,43 @@ export default function MusicPage() {
   const currentSong = remaining[0]
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-6 space-y-6">
+    <div className="max-w-xl mx-auto px-3 py-4 space-y-4">
       {/* Header */}
-      <Card>
-        <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center">
-            <Music size={22} className="text-green-700" />
+      <div className="bg-seno-card border border-seno-border rounded-2xl overflow-hidden">
+        <div className="h-px bg-gradient-to-r from-transparent via-seno-gold/40 to-transparent" />
+        <div className="p-4">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-10 h-10 rounded-2xl bg-seno-gold-tint border border-seno-border-gold flex items-center justify-center">
+              <Music size={20} className="text-seno-gold" />
+            </div>
+            <div>
+              <h1 className="text-base font-black text-seno-text">Music Networking</h1>
+              <p className="text-xs text-seno-dim">Compatibility Analytics Division</p>
+            </div>
           </div>
-          <div>
-            <h1 className="text-xl font-black text-seno-dark">Music Networking</h1>
-            <p className="text-sm text-seno-muted">My Network Division · Compatibility Analytics</p>
+          <p className="text-xs text-seno-muted leading-relaxed">
+            Grow your professional network through deeply concerning musical compatibility. Endorse tracks to build your playlist dossier.
+          </p>
+          <div className="mt-3 flex items-center gap-3 text-[10px] text-seno-dim flex-wrap">
+            <span className="flex items-center gap-1">🎵 <strong className="text-seno-muted">{remaining.length}</strong> remaining</span>
+            <span className="flex items-center gap-1">✦ <strong className="text-seno-gold">{endorsedSongs.length}</strong> endorsed</span>
+            <span className="flex items-center gap-1">🤝 <strong className="text-seno-text">{endorsedFriendApproved.length}/3</strong> Seno overlaps</span>
           </div>
         </div>
-        <p className="text-sm text-seno-dark mt-2">
-          Grow your professional network through deeply concerning musical compatibility. Endorse tracks to build your playlist dossier. Decline connections that do not align with your strategic yearning goals.
-        </p>
-        <div className="mt-3 flex items-center gap-4 text-xs text-seno-muted">
-          <span>🎵 {remaining.length} tracks remaining</span>
-          <span>👍 {endorsedSongs.length} endorsed</span>
-          <span>✓ {endorsedFriendApproved.length}/3 Seno overlaps</span>
-        </div>
-      </Card>
+      </div>
 
-      {/* Current swipe card */}
+      {/* Swipe card */}
       {!loaded ? (
-        <Card>
-          <p className="text-center text-seno-muted text-sm py-8 animate-pulse">
+        <div className="bg-seno-card border border-seno-border rounded-2xl p-8">
+          <p className="text-center text-seno-muted text-sm animate-pulse">
             Aligning stakeholders...
           </p>
-        </Card>
+        </div>
       ) : currentSong ? (
         <div>
-          <div className="text-center mb-3 text-xs text-seno-muted">
+          <p className="text-center text-[10px] text-seno-dim mb-2">
             Track {swipedIds.size + 1} of {seedSongs.length}
-          </div>
+          </p>
           <SwipeCard
             key={currentSong.id}
             song={currentSong}
@@ -92,18 +94,17 @@ export default function MusicPage() {
           />
         </div>
       ) : (
-        <Card>
-          <div className="text-center py-8 space-y-2">
-            <div className="text-4xl">✅</div>
-            <p className="font-bold text-seno-dark">Dossier complete.</p>
+        <div className="bg-seno-card border border-seno-border rounded-2xl p-8">
+          <div className="text-center space-y-2">
+            <div className="text-4xl">✦</div>
+            <p className="font-bold text-seno-text">Dossier complete.</p>
             <p className="text-sm text-seno-muted">
-              All available networking opportunities have been processed. Connection quality exceeds internal thresholds.
+              All networking opportunities processed. Connection quality exceeds internal thresholds.
             </p>
           </div>
-        </Card>
+        </div>
       )}
 
-      {/* Dossier */}
       {loaded && <PlaylistDossier endorsedSongs={endorsedSongs} onShowToast={setToast} />}
 
       <CompatibilityModal

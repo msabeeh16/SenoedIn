@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import { ReviewForm } from '../../components/games/ReviewForm'
 import { ReviewCard } from '../../components/games/ReviewCard'
-import { Card } from '../../components/ui/Card'
 import { seedGames } from '../../data/seed-games'
 import { getStore } from '../../lib/storage'
 import type { GameReview } from '../../lib/types'
@@ -28,40 +27,45 @@ export default function GamesPage() {
   const allReviews = [...userReviews, ...seedGames]
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-6 space-y-6">
+    <div className="max-w-xl mx-auto px-3 py-4 space-y-4">
       {/* Header */}
-      <Card>
-        <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center">
-            <Gamepad2 size={22} className="text-purple-600" />
+      <div className="bg-seno-card border border-seno-border rounded-2xl overflow-hidden">
+        <div className="h-px bg-gradient-to-r from-transparent via-seno-gold/40 to-transparent" />
+        <div className="p-4">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-10 h-10 rounded-2xl bg-seno-gold-tint border border-seno-border-gold flex items-center justify-center">
+              <Gamepad2 size={20} className="text-seno-gold" />
+            </div>
+            <div>
+              <h1 className="text-base font-black text-seno-text">Watcher&apos;s Log</h1>
+              <p className="text-xs text-seno-dim">Backseat Gaming Analytics Division</p>
+            </div>
           </div>
-          <div>
-            <h1 className="text-xl font-black text-seno-dark">Watcher&apos;s Log</h1>
-            <p className="text-sm text-seno-muted">Skills Division · Backseat Gaming Analytics</p>
-          </div>
+          <p className="text-xs text-seno-muted leading-relaxed">
+            Evaluate creators with the confidence of someone who is not holding the controller. Submit a YouTube URL, rate across six professional metrics, receive a formal classification for your records.
+          </p>
         </div>
-        <p className="text-sm text-seno-dark mt-2">
-          Evaluate creators with the confidence of someone who is not holding the controller. Submit a YouTube URL, rate the performance across six professional metrics, and receive a formal classification for your records.
-        </p>
-      </Card>
+      </div>
 
       <ReviewForm onSubmit={handleSubmit} />
 
-      {/* Saved audits */}
+      {/* Archive */}
       <div>
-        <h2 className="text-base font-bold text-seno-dark mb-4 flex items-center gap-2">
-          <span>Performance Audit Archive</span>
-          <span className="text-xs font-normal text-seno-muted">({allReviews.length} audits on file)</span>
-        </h2>
+        <div className="flex items-center gap-2 mb-3 px-1">
+          <h2 className="text-sm font-bold text-seno-text">Performance Audit Archive</h2>
+          <span className="text-[10px] text-seno-dim bg-seno-card border border-seno-border px-2 py-0.5 rounded-full">
+            {allReviews.length} audits on file
+          </span>
+        </div>
 
         {!loaded ? (
           <div className="text-center py-12 text-seno-muted text-sm animate-pulse">
             Aligning stakeholders...
           </div>
         ) : allReviews.length === 0 ? (
-          <Card>
-            <p className="text-center text-seno-muted text-sm py-6">No active disputes. This is statistically unusual.</p>
-          </Card>
+          <div className="bg-seno-card border border-seno-border rounded-2xl p-6">
+            <p className="text-center text-seno-muted text-sm">No active disputes. This is statistically unusual.</p>
+          </div>
         ) : (
           <div className="space-y-4">
             {allReviews.map(review => (

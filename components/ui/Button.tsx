@@ -10,11 +10,11 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantClasses: Record<Variant, string> = {
-  primary: 'bg-seno-blue text-white hover:bg-seno-blue-dark active:scale-95',
-  secondary: 'bg-seno-blue-light text-seno-blue hover:bg-seno-blue-pale active:scale-95',
-  ghost: 'text-seno-muted hover:bg-gray-100 active:scale-95',
-  danger: 'bg-red-600 text-white hover:bg-red-700 active:scale-95',
-  outline: 'border border-seno-border text-seno-dark hover:bg-gray-50 active:scale-95',
+  primary:   'bg-seno-gold text-[#0a0a0a] font-bold hover:bg-seno-gold-light active:scale-95 shadow-sm hover:shadow-[0_0_12px_rgba(212,160,23,0.4)]',
+  secondary: 'bg-seno-gold-tint text-seno-gold border border-seno-border-gold hover:bg-seno-gold/20 active:scale-95',
+  ghost:     'text-seno-muted hover:bg-seno-card-2 hover:text-seno-text active:scale-95',
+  danger:    'bg-red-700 text-white hover:bg-red-600 active:scale-95',
+  outline:   'border border-seno-border text-seno-text hover:border-seno-gold hover:text-seno-gold active:scale-95',
 }
 
 const sizeClasses: Record<Size, string> = {
@@ -24,22 +24,20 @@ const sizeClasses: Record<Size, string> = {
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ variant = 'primary', size = 'md', loading, className = '', children, disabled, ...props }, ref) => {
-    return (
-      <button
-        ref={ref}
-        disabled={disabled || loading}
-        className={`inline-flex items-center justify-center gap-1.5 font-semibold transition-all duration-150 disabled:opacity-50 disabled:cursor-not-allowed ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
-        {...props}
-      >
-        {loading ? (
-          <>
-            <span className="inline-block w-3.5 h-3.5 border-2 border-current border-t-transparent rounded-full animate-spin" />
-            <span>{children}</span>
-          </>
-        ) : children}
-      </button>
-    )
-  }
+  ({ variant = 'primary', size = 'md', loading, className = '', children, disabled, ...props }, ref) => (
+    <button
+      ref={ref}
+      disabled={disabled || loading}
+      className={`inline-flex items-center justify-center gap-1.5 font-semibold transition-all duration-150 disabled:opacity-40 disabled:cursor-not-allowed ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
+      {...props}
+    >
+      {loading ? (
+        <>
+          <span className="inline-block w-3.5 h-3.5 border-2 border-current border-t-transparent rounded-full animate-spin" />
+          <span>{children}</span>
+        </>
+      ) : children}
+    </button>
+  )
 )
 Button.displayName = 'Button'

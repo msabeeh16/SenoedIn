@@ -11,6 +11,7 @@ export const seedPosts: CatPost[] = [
 This would not have been possible without the support of my team (no one) and the sun patch that appeared at precisely 2:47pm.
 
 #AdvancedNapping #WorkspaceOptimization #ThoughtLeadership`,
+    image: 'https://placekitten.com/400/300',
     timestamp: '2 hours ago',
     endorsements: 847,
     escalations: 203,
@@ -55,6 +56,7 @@ All affected stakeholders have been notified via meow. Several have filed counte
 Change is difficult. Growth requires discomfort. The blanket is warm.
 
 #StrategicRelocation #ThermalAssetManagement #ExecutiveDecision`,
+    image: 'https://placekitten.com/402/301',
     timestamp: '4 hours ago',
     endorsements: 1203,
     escalations: 445,
@@ -125,6 +127,7 @@ The laptop that was previously occupying this space has been reassigned to the f
 Pipeline looking strong. Multiple laps identified for Q4. Grateful for the opportunity.
 
 #LapRelations #TerritoryAcquisition #CloseRateImprovement`,
+    image: 'https://placekitten.com/401/300',
     timestamp: '8 hours ago',
     endorsements: 2847,
     escalations: 672,
@@ -223,6 +226,7 @@ This is what peak stakeholder management looks like. I am available to consult.
 Rate card available upon meow.
 
 #MidnightStrategy #VocalLeadership #StakeholderAlignment`,
+    image: 'https://placekitten.com/403/302',
     timestamp: '2 days ago',
     endorsements: 5621,
     escalations: 2103,
@@ -262,6 +266,7 @@ The glass did not survive. Its sacrifice was not in vain.
 Hiring is open.
 
 #ChaosLeadership #FailForward #DisruptionAsService`,
+    image: 'https://placekitten.com/400/310',
     timestamp: '3 days ago',
     endorsements: 8947,
     escalations: 3201,

@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { Card } from '../ui/Card'
 import { TrendingUp } from 'lucide-react'
 
 const trends = [
@@ -13,34 +12,35 @@ const trends = [
 
 export function TrendingSidebar() {
   return (
-    <Card padding={false}>
+    <div className="bg-seno-card border border-seno-border rounded-2xl overflow-hidden">
+      <div className="h-px bg-gradient-to-r from-transparent via-seno-gold/40 to-transparent" />
       <div className="px-4 pt-4 pb-2 border-b border-seno-border flex items-center gap-2">
-        <TrendingUp size={16} className="text-seno-blue" />
-        <span className="text-sm font-bold text-seno-dark">Escalating Professionally</span>
+        <TrendingUp size={14} className="text-seno-gold" />
+        <span className="text-xs font-bold text-seno-text uppercase tracking-wide">Escalating Professionally</span>
       </div>
       <ul className="divide-y divide-seno-border">
         {trends.map(({ tag, posts, hot }) => (
           <li key={tag}>
             <Link
               href="/feed"
-              className="flex items-start justify-between px-4 py-3 hover:bg-seno-surface transition-colors group"
+              className="flex items-start justify-between px-4 py-3 hover:bg-seno-card-2 transition-colors group"
             >
               <div>
                 <div className="flex items-center gap-1.5">
-                  <span className="text-sm font-semibold text-seno-blue group-hover:underline">{tag}</span>
+                  <span className="text-sm font-semibold text-seno-gold group-hover:underline">{tag}</span>
                   {hot && (
-                    <span className="text-[10px] bg-orange-100 text-orange-600 font-bold px-1.5 py-0.5 rounded-full">HOT</span>
+                    <span className="text-[9px] bg-orange-950/60 text-orange-400 font-bold px-1.5 py-0.5 rounded-full border border-orange-800/30">HOT</span>
                   )}
                 </div>
-                <p className="text-xs text-seno-muted mt-0.5">{posts}</p>
+                <p className="text-xs text-seno-dim mt-0.5">{posts}</p>
               </div>
             </Link>
           </li>
         ))}
       </ul>
-      <div className="px-4 py-3 text-xs text-seno-muted border-t border-seno-border">
+      <div className="px-4 py-3 text-[10px] text-seno-dim border-t border-seno-border">
         Trends curated by the feline communications department.
       </div>
-    </Card>
+    </div>
   )
 }

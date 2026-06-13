@@ -57,5 +57,7 @@ Available for consultation regarding: fence-line protocols, advanced napping met
     { id: 'sk-6', name: 'Territory Escalation Management', endorsementCount: 62, endorsers: ['Principal Mittens', 'Managing Director Crumbs', 'VP Fluffington'] },
     { id: 'sk-7', name: 'Post-Game Debriefing (Non-Participant)', endorsementCount: 29, endorsers: ['SVP Thunderpaws', 'COO Patches'] },
     { id: 'sk-8', name: 'Fence Line Diplomatic Protocol', endorsementCount: 44, endorsers: ['CEO Biscuit', 'Director Whiskers', 'Principal Advisor Boop'] },
+    { id: 'sk-9', name: 'Crochet & Fiber Arts Strategy', endorsementCount: 18, endorsers: ['Director Whiskers', 'COO Patches'] },
+    { id: 'sk-10', name: "Rubik's Cube Spatial Reasoning", endorsementCount: 11, endorsers: ['SVP Thunderpaws', 'VP Fluffington'] },
   ],
 }

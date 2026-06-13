@@ -6,7 +6,7 @@ interface CatAvatarProps {
 }
 
 const sizes = {
-  sm: 'w-8 h-8 text-lg',
+  sm: 'w-9 h-9 text-lg',
   md: 'w-11 h-11 text-2xl',
   lg: 'w-16 h-16 text-3xl',
 }
@@ -14,8 +14,8 @@ const sizes = {
 export function CatAvatar({ name, avatar, color, size = 'md' }: CatAvatarProps) {
   return (
     <div
-      className={`${sizes[size]} rounded-full flex items-center justify-center shrink-0 shadow-sm border-2 border-seno-card`}
-      style={{ backgroundColor: color + '22', borderColor: color + '44' }}
+      className={`${sizes[size]} rounded-full flex items-center justify-center shrink-0 ring-1 ring-seno-border-gold`}
+      style={{ backgroundColor: color + '18' }}
       aria-label={name}
       title={name}
     >
