@@ -42,7 +42,7 @@ export default function ClimbingPage() {
             </div>
           </div>
           <p className="text-xs text-seno-muted leading-relaxed">
-            Upload a photo of any wall surface. Receive a professionally generated fictional route report complete with decorative hold markers, a grade of questionable accuracy, and dramatic beta commentary.
+            Upload a photo of any climbable surface — gym wall, playground equipment, tree, park structure, or questionable fence. Receive a professionally generated fictional route report complete with decorative hold markers, a grade of questionable accuracy, and dramatic beta commentary.
           </p>
         </div>
       </div>

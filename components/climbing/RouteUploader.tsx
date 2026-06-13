@@ -84,7 +84,7 @@ export function RouteUploader({ onReport }: RouteUploaderProps) {
 
         <div className="bg-amber-950/25 border border-amber-800/30 rounded-xl p-3 text-xs text-amber-400/80 flex items-start gap-2">
           <span className="text-base shrink-0">⚠️</span>
-          <p>Parody route report only. Do not climb unapproved structures. Playgrounds and walls excluded. Decorative markers are not verified holds.</p>
+          <p>Parody route report only. Decorative markers are not verified holds. Do not climb unapproved structures. Yield to children on playground equipment. Trees are unverified climbing surfaces.</p>
         </div>
 
         {phase === 'idle' && (

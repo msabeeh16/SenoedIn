@@ -204,6 +204,26 @@ export const climbingFallbacks: ClimbAnalysisResponse[] = [
     dramaticReview: 'The Deep Work Roof is the hardest route in the gym and also the most rewarding. Nobody sends it first try. Nobody sends it with background noise. The finish hold — a large jug labelled "Completed Something Real Today" — is the best hold in the building. Visit whenever possible.',
     safetyDisclaimer: 'Parody route report only. Do not climb unapproved structures. Decorative markers are not verified holds. Roof climbing requires substantial experience and appropriate safety systems.',
   },
+  {
+    routeName: 'The Monkey Bar Meridian',
+    fictionalGrade: 'V3 (Nostalgic)',
+    style: 'Bar Traverse / Grip Strength / Public Spectacle',
+    startingHolds: 'First rung of a playground horizontal ladder. Grip is omnidirectional. This is the easy part.',
+    crux: 'Rung 5 ("The Bar Where Everyone Falls"). No notable feature. Just statistically where it happens.',
+    beta: 'Maintain hip height. Do not kip — this is not a CrossFit commercial. The 7-year-old behind you is watching and will not hesitate to offer unsolicited beta.',
+    dramaticReview: 'Completed in full view of several unimpressed children and one dog who had opinions about my beta. The bars are regulation width but the ambient pressure is V10. Prerequisite: thick skin, child-proof ego, willingness to be lapped by a 9-year-old.',
+    safetyDisclaimer: 'Parody route report only. Do not block playground equipment when children are present. These are real playground structures. Climb courteously and yield to actual children.',
+  },
+  {
+    routeName: 'The Annual Oak (Classic Line)',
+    fictionalGrade: 'V? (Unrated — Nature Does Not Grade)',
+    style: 'Free Solo / Traditional / Bark-Dependent / Seasonal',
+    startingHolds: 'The lowest branch. Estimated 5 feet off ground. Approach via a stepping-stone that was not placed there intentionally.',
+    crux: 'Second branch fork at approximately 11 feet. Left limb is better. Right limb is more photogenic. This is why it is the crux.',
+    beta: 'Dry conditions only. The bark is positive until it is not. Test each hold before weighting. The tree does not know you are climbing it. This is freeing.',
+    dramaticReview: 'No route-setter. No bolt. No grade. Just bark, height, and unstructured anxiety. Reached the third branch and stayed for 20 minutes. No consensus on whether this is a send. The tree has no opinion.',
+    safetyDisclaimer: 'Parody route report only. Do not climb trees without assessing structural stability. Trees are unverified climbing surfaces. Always climb conservatively and never alone.',
+  },
 ]
 
 export function getRandomCatCaption(): CatCaptionResponse {

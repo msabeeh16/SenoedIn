@@ -83,20 +83,20 @@ export function SwipeCard({ song, onEndorse, onDecline }: SwipeCardProps) {
         onPointerUp={onPointerUp}
         onPointerCancel={onPointerUp}
       >
-        {/* Swipe overlays */}
+        {/* Swipe overlays — ENDORSE on RIGHT (swipe right = Endorse button side), PASS on LEFT */}
         <div
-          className="absolute inset-0 z-20 rounded-3xl flex items-start justify-start p-6 pointer-events-none"
-          style={{ opacity: endorseOpacity, background: 'linear-gradient(135deg, rgba(34,197,94,0.3) 0%, transparent 60%)' }}
+          className="absolute inset-0 z-20 rounded-3xl flex items-start justify-end p-6 pointer-events-none"
+          style={{ opacity: endorseOpacity, background: 'linear-gradient(225deg, rgba(34,197,94,0.35) 0%, transparent 60%)' }}
         >
-          <div className="border-4 border-green-400 rounded-xl px-4 py-2 rotate-[-12deg]">
+          <div className="border-4 border-green-400 rounded-xl px-4 py-2 rotate-[12deg]">
             <span className="text-green-400 font-black text-2xl tracking-widest">ENDORSE</span>
           </div>
         </div>
         <div
-          className="absolute inset-0 z-20 rounded-3xl flex items-start justify-end p-6 pointer-events-none"
-          style={{ opacity: declineOpacity, background: 'linear-gradient(225deg, rgba(239,68,68,0.3) 0%, transparent 60%)' }}
+          className="absolute inset-0 z-20 rounded-3xl flex items-start justify-start p-6 pointer-events-none"
+          style={{ opacity: declineOpacity, background: 'linear-gradient(135deg, rgba(239,68,68,0.35) 0%, transparent 60%)' }}
         >
-          <div className="border-4 border-red-400 rounded-xl px-4 py-2 rotate-[12deg]">
+          <div className="border-4 border-red-400 rounded-xl px-4 py-2 rotate-[-12deg]">
             <span className="text-red-400 font-black text-2xl tracking-widest">PASS</span>
           </div>
         </div>
