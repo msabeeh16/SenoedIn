@@ -66,10 +66,10 @@ export function Header() {
         </nav>
 
         {/* Right: notification bell */}
-        <button aria-label="Developments" className="relative p-2 rounded-xl hover:bg-seno-card-2 text-seno-muted hover:text-seno-text transition-colors">
+        <Link href="/messages" aria-label="Developments" className="relative p-2 rounded-xl hover:bg-seno-card-2 text-seno-muted hover:text-seno-text transition-colors">
           <Bell size={18} />
           <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-seno-gold rounded-full" />
-        </button>
+        </Link>
       </div>
     </header>
   )

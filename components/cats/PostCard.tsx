@@ -13,18 +13,16 @@ interface PostCardProps {
   post: CatPost
   onEndorse: (postId: string, current: number) => void
   onComment: (postId: string, text: string) => void
+  onNotify?: (message: string) => void
   className?: string
   style?: React.CSSProperties
 }
 
-function formatCount(n: number): string {
-  if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k'
-  return String(n)
-}
-
-export function PostCard({ post, onEndorse, onComment, className = '', style }: PostCardProps) {
+export function PostCard({ post, onEndorse, onComment, onNotify, className = '', style }: PostCardProps) {
   const [showComments, setShowComments] = useState(false)
   const [endorsed, setEndorsed] = useState(false)
+  const [connected, setConnected] = useState(false)
+  const [escalated, setEscalated] = useState(false)
   const [localEndorsements, setLocalEndorsements] = useState(post.endorsements)
 
   const handleEndorse = () => {
@@ -32,6 +30,17 @@ export function PostCard({ post, onEndorse, onComment, className = '', style }: 
     setEndorsed(!endorsed)
     setLocalEndorsements(next)
     onEndorse(post.id, next)
+  }
+
+  const handleForward = async () => {
+    const text = `${post.author.name}: ${post.content.slice(0, 120)}`
+    try {
+      if (navigator.share) await navigator.share({ title: 'SenoedIn post', text })
+      else await navigator.clipboard.writeText(text)
+      onNotify?.('Post forwarded to the appropriate stakeholders.')
+    } catch {
+      onNotify?.('Forwarding was cancelled.')
+    }
   }
 
   const paragraphs = post.content.split('\n\n').filter(Boolean)
@@ -77,10 +86,14 @@ export function PostCard({ post, onEndorse, onComment, className = '', style }: 
           <p className="text-[10px] mt-0.5" style={{ color: '#555555' }}>{post.timestamp}</p>
         </div>
         <button
+          onClick={() => {
+            setConnected(value => !value)
+            onNotify?.(connected ? `Connection with ${post.author.name} withdrawn.` : `Connected with ${post.author.name}.`)
+          }}
           className="text-[11px] font-bold rounded-full px-2.5 py-1 flex-shrink-0"
           style={{ color: GOLD, border: '1px solid rgba(212,160,23,0.35)', background: 'rgba(212,160,23,0.06)' }}
         >
-          + Connect
+          {connected ? 'Connected' : '+ Connect'}
         </button>
       </div>
 
@@ -136,8 +149,16 @@ export function PostCard({ post, onEndorse, onComment, className = '', style }: 
             active: endorsed,
           },
           { icon: <MessageSquare size={15} />, label: 'Feedback', action: () => setShowComments(v => !v), active: showComments },
-          { icon: <AlertTriangle size={15} />, label: 'Escalate', action: () => {}, active: false },
-          { icon: <Share2 size={15} />, label: 'Forward', action: () => {}, active: false },
+          {
+            icon: <AlertTriangle size={15} />,
+            label: escalated ? 'Escalated' : 'Escalate',
+            action: () => {
+              setEscalated(value => !value)
+              onNotify?.(escalated ? 'Escalation withdrawn.' : 'Incident escalated for executive review.')
+            },
+            active: escalated,
+          },
+          { icon: <Share2 size={15} />, label: 'Forward', action: handleForward, active: false },
         ].map(btn => (
           <button
             key={btn.label}

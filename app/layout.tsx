@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <head>
-        <link rel="apple-touch-icon" href="/icon-192.png" />
+        <link rel="apple-touch-icon" href="/seno-cat.jpg" />
       </head>
       <body className="bg-seno-bg text-seno-text antialiased">
         <AppShell>{children}</AppShell>

@@ -6,6 +6,7 @@ const KEYS = {
   gameReviews: 'senoedin.gameReviews',
   musicSwipes: 'senoedin.musicSwipes',
   reactions: 'senoedin.reactions',
+  comments: 'senoedin.comments',
 } as const
 
 function read<T>(key: string, fallback: T): T {
@@ -44,12 +45,9 @@ export class LocalStore implements Store {
   }
 
   async addComment(postId: string, comment: Comment): Promise<void> {
-    const posts = await this.getCatPosts()
-    const idx = posts.findIndex(p => p.id === postId)
-    if (idx !== -1) {
-      posts[idx] = { ...posts[idx], comments: [...posts[idx].comments, comment] }
-      write(KEYS.catPosts, posts)
-    }
+    const comments = read<Record<string, Comment[]>>(KEYS.comments, {})
+    comments[postId] = [...(comments[postId] ?? []), comment]
+    write(KEYS.comments, comments)
   }
 
   async getClimbingReports(): Promise<ClimbingReport[]> {
@@ -88,4 +86,8 @@ export class LocalStore implements Store {
 
 export function getStoredReactions(): Record<string, number> {
   return read<Record<string, number>>(KEYS.reactions, {})
+}
+
+export function getStoredComments(): Record<string, Comment[]> {
+  return read<Record<string, Comment[]>>(KEYS.comments, {})
 }

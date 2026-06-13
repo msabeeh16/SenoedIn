@@ -15,10 +15,14 @@ export function PlaylistDossier({ endorsedSongs, onShowToast }: PlaylistDossierP
 
   const handleCopy = async () => {
     const links = endorsedSongs.map(s => `${s.title} — ${s.artist}\n${s.spotifyUrl}`).join('\n\n')
-    try { await navigator.clipboard.writeText(links) } catch { /* ignore */ }
-    setCopied(true)
-    onShowToast('Collaborative playlist dossier prepared for executive review.')
-    setTimeout(() => setCopied(false), 2500)
+    try {
+      await navigator.clipboard.writeText(links)
+      setCopied(true)
+      onShowToast('Collaborative playlist dossier copied for executive review.')
+      setTimeout(() => setCopied(false), 2500)
+    } catch {
+      onShowToast('Clipboard access was blocked. Open the Spotify links individually.')
+    }
   }
 
   if (endorsedSongs.length === 0) return null

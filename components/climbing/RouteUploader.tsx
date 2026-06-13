@@ -31,7 +31,6 @@ export function RouteUploader({ onReport }: RouteUploaderProps) {
 
   useEffect(() => {
     if (phase !== 'scanning') return
-    setScanStep(0)
     const interval = setInterval(() => {
       setScanStep(s => (s + 1) % SCAN_STEPS.length)
     }, 900)
@@ -51,6 +50,7 @@ export function RouteUploader({ onReport }: RouteUploaderProps) {
   }
 
   const handleAnalyze = async () => {
+    setScanStep(0)
     setPhase('scanning')
     try {
       const mimeType = imagePreview?.split(';')[0]?.split(':')[1] || 'image/jpeg'

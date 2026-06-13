@@ -1,13 +1,18 @@
 'use client'
 
+import { useState } from 'react'
 import { seedProfile } from '../../data/seed-profile'
 import { Badge } from '../../components/ui/Badge'
 import { Button } from '../../components/ui/Button'
 import { MapPin, Eye, Users, Award, Mountain, Music, Gamepad2, Lock } from 'lucide-react'
 import Link from 'next/link'
+import { Toast } from '../../components/ui/Toast'
 
 export default function ProfilePage() {
   const p = seedProfile
+  const [connected, setConnected] = useState(false)
+  const [endorsed, setEndorsed] = useState(false)
+  const [toast, setToast] = useState<string | null>(null)
 
   return (
     <div className="max-w-xl mx-auto px-3 py-4 space-y-4">
@@ -25,8 +30,25 @@ export default function ProfilePage() {
               {p.avatarInitials}
             </div>
             <div className="flex gap-2 flex-wrap mt-8">
-              <Button variant="outline" size="sm">Connect</Button>
-              <Button size="sm">Endorse</Button>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  setConnected(value => !value)
+                  setToast(connected ? 'Connection request withdrawn.' : 'Connection request accepted for demo purposes.')
+                }}
+              >
+                {connected ? 'Connected' : 'Connect'}
+              </Button>
+              <Button
+                size="sm"
+                onClick={() => {
+                  setEndorsed(value => !value)
+                  setToast(endorsed ? 'Profile endorsement removed.' : 'Profile endorsed.')
+                }}
+              >
+                {endorsed ? 'Endorsed' : 'Endorse'}
+              </Button>
             </div>
           </div>
 
@@ -164,6 +186,7 @@ export default function ProfilePage() {
           ))}
         </div>
       </div>
+      {toast && <Toast message={toast} onDismiss={() => setToast(null)} />}
     </div>
   )
 }

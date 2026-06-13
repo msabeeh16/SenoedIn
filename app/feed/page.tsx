@@ -6,16 +6,25 @@ import { PostCard } from '../../components/cats/PostCard'
 import { PostComposer } from '../../components/cats/PostComposer'
 import { seedPosts } from '../../data/seed-posts'
 import { getStore } from '../../lib/storage'
+import { getStoredComments, getStoredReactions } from '../../lib/storage/local-store'
+import { Toast } from '../../components/ui/Toast'
 
 export default function FeedPage() {
   const [posts, setPosts] = useState<CatPost[]>([])
   const [loaded, setLoaded] = useState(false)
+  const [toast, setToast] = useState<string | null>(null)
 
   useEffect(() => {
     async function load() {
       const store = getStore()
       const userPosts = await store.getCatPosts()
-      setPosts([...userPosts, ...seedPosts])
+      const reactions = getStoredReactions()
+      const comments = getStoredComments()
+      setPosts([...userPosts, ...seedPosts].map(post => ({
+        ...post,
+        endorsements: reactions[post.id] ?? post.endorsements,
+        comments: [...post.comments, ...(comments[post.id] ?? [])],
+      })))
       setLoaded(true)
     }
     load()
@@ -51,29 +60,42 @@ export default function FeedPage() {
     )
   }
 
-  const storyAuthors = [...new Map(
-    [...posts].map(p => [p.authorId, p.author])
-  ).values()].slice(0, 8)
+  const trending = [
+    { tag: '#StrategicNapping',     stat: '2.4k endorsements', hot: true  },
+    { tag: '#TerritoryExpansion',   stat: '↑ 847 this week',   hot: true  },
+    { tag: '#MidnightVocals',       stat: '1.2k mentions',     hot: false },
+    { tag: '#BlanketRelocation',    stat: 'Trending near you',  hot: false },
+    { tag: '#SunPatchAlliance',     stat: '↑ 203 today',       hot: false },
+    { tag: '#WindowsillDiplomacy',  stat: 'Emerging topic',    hot: false },
+    { tag: '#LapAcquisition',       stat: '↑ 562 this week',   hot: false },
+    { tag: '#ChaosLeadership',      stat: '3.2k endorsements', hot: true  },
+  ]
 
   return (
     <div className="max-w-xl mx-auto py-4">
-      {/* Stories row */}
-      <div className="flex gap-3 px-4 pb-3 overflow-x-auto" style={{ scrollbarWidth: 'none' }}>
-        {storyAuthors.map(author => (
-          <div key={author.id} className="flex flex-col items-center gap-1 flex-shrink-0">
-            <div
-              className="w-14 h-14 rounded-full p-0.5"
-              style={{ background: 'linear-gradient(135deg, #d4a017, #e8b420)' }}
-            >
-              <div
-                className="w-full h-full rounded-full flex items-center justify-center text-2xl"
-                style={{ background: '#0a0a0a', border: '2px solid #0a0a0a', backgroundColor: author.color + '22' }}
-              >
-                {author.avatar}
-              </div>
+      {/* Trending in the Territory */}
+      <div className="px-4 pb-1">
+        <p className="text-[10px] font-bold tracking-widest uppercase mb-2" style={{ color: '#555555' }}>
+          Trending in the Territory
+        </p>
+      </div>
+      <div className="flex gap-2 px-4 pb-4 overflow-x-auto" style={{ scrollbarWidth: 'none' }}>
+        {trending.map(({ tag, stat, hot }) => (
+          <button
+            key={tag}
+            onClick={() => setToast(`${tag} briefing added to your demo agenda.`)}
+            className="flex-shrink-0 rounded-xl px-3 py-2 text-left transition-colors"
+            style={{
+              background: hot ? 'rgba(212,160,23,0.08)' : '#111111',
+              border: `1px solid ${hot ? 'rgba(212,160,23,0.3)' : '#1e1e1e'}`,
+            }}
+          >
+            <div className="flex items-center gap-1 mb-0.5">
+              {hot && <span style={{ color: '#d4a017', fontSize: 9 }}>🔥</span>}
+              <span className="text-[11px] font-bold" style={{ color: hot ? '#e8b420' : '#f0ede4' }}>{tag}</span>
             </div>
-            <span className="text-[10px]" style={{ color: '#888888' }}>{author.name.split(' ')[0]}</span>
-          </div>
+            <p className="text-[10px]" style={{ color: '#555555' }}>{stat}</p>
+          </button>
         ))}
       </div>
 
@@ -94,10 +116,12 @@ export default function FeedPage() {
               post={post}
               onEndorse={handleEndorse}
               onComment={handleComment}
+              onNotify={setToast}
             />
           ))}
         </div>
       )}
+      {toast && <Toast message={toast} onDismiss={() => setToast(null)} />}
     </div>
   )
 }

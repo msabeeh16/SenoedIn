@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react'
 import type { Song } from '../../lib/types'
-import { X, Heart } from 'lucide-react'
+import { X, Heart, ExternalLink } from 'lucide-react'
 
 interface SwipeCardProps {
   song: Song
@@ -101,25 +101,11 @@ export function SwipeCard({ song, onEndorse, onDecline }: SwipeCardProps) {
           </div>
         </div>
 
-        {/* Spotify embed or placeholder */}
-        {song.spotifyEmbedUrl ? (
-          <iframe
-            src={song.spotifyEmbedUrl}
-            width="100%"
-            height="152"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            loading="lazy"
-            className="border-0 pointer-events-none"
-            title={`${song.title} by ${song.artist}`}
-            style={{ colorScheme: 'dark' }}
-          />
-        ) : (
-          <div className="h-36 bg-gradient-to-br from-seno-card-2 to-black flex flex-col items-center justify-center gap-2 relative overflow-hidden pointer-events-none">
-            <div className="absolute inset-0 opacity-5"
-              style={{ backgroundImage: 'radial-gradient(circle at 30% 40%, #d4a017 0%, transparent 60%), radial-gradient(circle at 70% 60%, #d4a017 0%, transparent 60%)' }} />
-            <span className="text-5xl">🎵</span>
-          </div>
-        )}
+        <div className="h-36 bg-gradient-to-br from-seno-card-2 to-black flex flex-col items-center justify-center gap-2 relative overflow-hidden pointer-events-none">
+          <div className="absolute inset-0 opacity-5"
+            style={{ backgroundImage: 'radial-gradient(circle at 30% 40%, #d4a017 0%, transparent 60%), radial-gradient(circle at 70% 60%, #d4a017 0%, transparent 60%)' }} />
+          <span className="text-5xl">🎵</span>
+        </div>
 
         <div className="p-5 space-y-3 pointer-events-none">
           <div className="flex items-start justify-between gap-2">
@@ -140,6 +126,17 @@ export function SwipeCard({ song, onEndorse, onDecline }: SwipeCardProps) {
           <p className="text-xs text-seno-dim bg-seno-card-2 rounded-xl px-3 py-2 italic">
             &ldquo;This track has been flagged as a potential professional networking opportunity.&rdquo;
           </p>
+
+          <a
+            href={song.spotifyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="pointer-events-auto inline-flex items-center gap-1.5 text-xs font-semibold text-seno-gold hover:text-seno-gold-light"
+            onPointerDown={e => e.stopPropagation()}
+          >
+            Find {song.title} by {song.artist} on Spotify
+            <ExternalLink size={12} />
+          </a>
         </div>
 
         {/* Action buttons */}

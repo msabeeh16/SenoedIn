@@ -16,24 +16,27 @@ export default function MusicPage() {
   const [modalShownAt, setModalShownAt] = useState(0)
   const [toast, setToast] = useState<string | null>(null)
   const [loaded, setLoaded] = useState(false)
+  const [deckIndex, setDeckIndex] = useState(0)
 
   useEffect(() => {
     getStore().getMusicSwipes().then(s => {
       setSwipes(s)
+      const swipedIds = new Set(s.map(swipe => swipe.songId))
+      const firstUnseen = seedSongs.findIndex(song => !swipedIds.has(song.id))
+      setDeckIndex(firstUnseen === -1 ? 0 : firstUnseen)
       setLoaded(true)
     })
   }, [])
 
-  const swipedIds = new Set(swipes.map(s => s.songId))
-  const remaining = seedSongs.filter(s => !swipedIds.has(s.id))
   const endorsedIds = new Set(swipes.filter(s => s.direction === 'endorse').map(s => s.songId))
   const endorsedSongs = seedSongs.filter(s => endorsedIds.has(s.id))
   const endorsedFriendApproved = endorsedSongs.filter(s => FRIEND_APPROVED_SONG_IDS.includes(s.id))
 
   const handleSwipe = async (song: Song, direction: 'endorse' | 'decline') => {
     const swipe: MusicSwipe = { songId: song.id, direction, timestamp: new Date().toISOString() }
-    const next = [...swipes, swipe]
+    const next = [...swipes.filter(existing => existing.songId !== song.id), swipe]
     setSwipes(next)
+    setDeckIndex(current => (current + 1) % seedSongs.length)
     await getStore().addMusicSwipe(swipe)
 
     if (direction === 'endorse') {
@@ -46,7 +49,7 @@ export default function MusicPage() {
     }
   }
 
-  const currentSong = remaining[0]
+  const currentSong = seedSongs[deckIndex]
 
   return (
     <div className="max-w-xl mx-auto px-3 py-4 space-y-4">
@@ -67,7 +70,7 @@ export default function MusicPage() {
             Grow your professional network through deeply concerning musical compatibility. Endorse tracks to build your playlist dossier.
           </p>
           <div className="mt-3 flex items-center gap-3 text-[10px] text-seno-dim flex-wrap">
-            <span className="flex items-center gap-1">🎵 <strong className="text-seno-muted">{remaining.length}</strong> remaining</span>
+            <span className="flex items-center gap-1">🎵 <strong className="text-seno-muted">{seedSongs.length}</strong> rotating tracks</span>
             <span className="flex items-center gap-1">✦ <strong className="text-seno-gold">{endorsedSongs.length}</strong> endorsed</span>
             <span className="flex items-center gap-1">🤝 <strong className="text-seno-text">{endorsedFriendApproved.length}/3</strong> Seno overlaps</span>
           </div>
@@ -81,27 +84,17 @@ export default function MusicPage() {
             Aligning stakeholders...
           </p>
         </div>
-      ) : currentSong ? (
+      ) : (
         <div>
           <p className="text-center text-[10px] text-seno-dim mb-2">
-            Track {swipedIds.size + 1} of {seedSongs.length}
+            Track {deckIndex + 1} of {seedSongs.length} · catalog repeats
           </p>
           <SwipeCard
-            key={currentSong.id}
+            key={`${currentSong.id}-${currentSong.spotifyUrl}-${swipes.find(s => s.songId === currentSong.id)?.timestamp ?? 'new'}`}
             song={currentSong}
             onEndorse={s => handleSwipe(s, 'endorse')}
             onDecline={s => handleSwipe(s, 'decline')}
           />
-        </div>
-      ) : (
-        <div className="bg-seno-card border border-seno-border rounded-2xl p-8">
-          <div className="text-center space-y-2">
-            <div className="text-4xl">✦</div>
-            <p className="font-bold text-seno-text">Dossier complete.</p>
-            <p className="text-sm text-seno-muted">
-              All networking opportunities processed. Connection quality exceeds internal thresholds.
-            </p>
-          </div>
         </div>
       )}
 
