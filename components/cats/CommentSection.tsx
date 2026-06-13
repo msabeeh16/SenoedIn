@@ -30,10 +30,10 @@ export function CommentSection({ comments, postId, onAddComment }: CommentSectio
           </div>
           <div className="flex-1 bg-seno-card-2 rounded-xl px-3 py-2">
             <div className="flex items-baseline gap-1.5 flex-wrap">
-              <span className="text-xs font-semibold text-seno-text">{comment.authorName}</span>
+              <span className="text-xs font-bold text-seno-gold">{comment.authorName}</span>
               <span className="text-[10px] text-seno-dim">· {comment.authorTitle}</span>
             </div>
-            <p className="text-xs text-seno-muted mt-0.5 leading-relaxed">{comment.content}</p>
+            <p className="text-xs text-seno-text mt-0.5 leading-relaxed">{comment.content}</p>
             <span className="text-[10px] text-seno-dim mt-1 block">{comment.timestamp}</span>
           </div>
         </div>

@@ -28,8 +28,16 @@ export function RouteReport({ report }: RouteReportProps) {
         {report.imageUrl ? (
           <RouteMarkers markers={report.markers} imageUrl={report.imageUrl} />
         ) : (
-          <div className="relative bg-seno-card-2 border border-seno-border rounded-xl h-44 overflow-hidden">
-            <div className="absolute inset-0 flex items-center justify-center text-seno-dim text-sm">No wall image</div>
+          <div className="relative rounded-xl overflow-hidden border border-seno-border h-48"
+            style={{ background: 'linear-gradient(135deg, #111 0%, #1a1a1a 40%, #0f0f0f 100%)' }}
+          >
+            {/* Grid texture */}
+            <div className="absolute inset-0 opacity-20"
+              style={{ backgroundImage: 'linear-gradient(#d4a01720 1px, transparent 1px), linear-gradient(90deg, #d4a01720 1px, transparent 1px)', backgroundSize: '32px 32px' }}
+            />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <p className="text-seno-dim text-xs">Fictional route — no photo on file</p>
+            </div>
             {report.markers.map(marker => (
               <div
                 key={marker.id}

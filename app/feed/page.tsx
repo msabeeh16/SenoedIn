@@ -51,9 +51,35 @@ export default function FeedPage() {
     )
   }
 
+  const storyAuthors = [...new Map(
+    [...posts].map(p => [p.authorId, p.author])
+  ).values()].slice(0, 8)
+
   return (
-    <div className="max-w-xl mx-auto px-3 py-4 space-y-4">
-      <PostComposer onPublish={handlePublish} />
+    <div className="max-w-xl mx-auto py-4">
+      {/* Stories row */}
+      <div className="flex gap-3 px-4 pb-3 overflow-x-auto" style={{ scrollbarWidth: 'none' }}>
+        {storyAuthors.map(author => (
+          <div key={author.id} className="flex flex-col items-center gap-1 flex-shrink-0">
+            <div
+              className="w-14 h-14 rounded-full p-0.5"
+              style={{ background: 'linear-gradient(135deg, #d4a017, #e8b420)' }}
+            >
+              <div
+                className="w-full h-full rounded-full flex items-center justify-center text-2xl"
+                style={{ background: '#0a0a0a', border: '2px solid #0a0a0a', backgroundColor: author.color + '22' }}
+              >
+                {author.avatar}
+              </div>
+            </div>
+            <span className="text-[10px]" style={{ color: '#888888' }}>{author.name.split(' ')[0]}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="px-3 mb-4">
+        <PostComposer onPublish={handlePublish} />
+      </div>
 
       {!loaded ? (
         <div className="text-center py-16 text-seno-muted text-sm">
@@ -61,14 +87,16 @@ export default function FeedPage() {
           <p>Aligning stakeholders...</p>
         </div>
       ) : (
-        posts.map(post => (
-          <PostCard
-            key={post.id}
-            post={post}
-            onEndorse={handleEndorse}
-            onComment={handleComment}
-          />
-        ))
+        <div className="px-3 space-y-4">
+          {posts.map(post => (
+            <PostCard
+              key={post.id}
+              post={post}
+              onEndorse={handleEndorse}
+              onComment={handleComment}
+            />
+          ))}
+        </div>
       )}
     </div>
   )
