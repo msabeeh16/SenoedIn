@@ -1,0 +1,68 @@
+import type { GameReview } from '../lib/types'
+
+export const seedGames: GameReview[] = [
+  {
+    id: 'game-1',
+    youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    videoId: 'dQw4w9WgXcQ',
+    title: 'Minecraft Survival — Day 1 to Diamond (But Somehow No Diamonds)',
+    ratings: {
+      actionsPerMinute: 3,
+      blindness: 9,
+      rageLevel: 4,
+      lootAwareness: 1,
+      strategicIntegrity: 2,
+      commentary: 7,
+    },
+    classification: 'Loot blindness documented',
+    timestamp: '2 days ago',
+  },
+  {
+    id: 'game-2',
+    youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    videoId: 'dQw4w9WgXcQ',
+    title: 'Elden Ring First Playthrough — "I Think I Got This"',
+    ratings: {
+      actionsPerMinute: 6,
+      blindness: 7,
+      rageLevel: 10,
+      lootAwareness: 3,
+      strategicIntegrity: 1,
+      commentary: 9,
+    },
+    classification: 'Executive intervention required',
+    timestamp: '5 days ago',
+  },
+  {
+    id: 'game-3',
+    youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    videoId: 'dQw4w9WgXcQ',
+    title: 'Stardew Valley — A Calm Farming Experience (Year 7)',
+    ratings: {
+      actionsPerMinute: 1,
+      blindness: 2,
+      rageLevel: 1,
+      lootAwareness: 8,
+      strategicIntegrity: 9,
+      commentary: 6,
+    },
+    classification: 'Competent but insufficiently dramatic',
+    timestamp: '1 week ago',
+  },
+  {
+    id: 'game-4',
+    youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    videoId: 'dQw4w9WgXcQ',
+    title: 'Minecraft Hardcore — The Dirt Hut Chronicles',
+    ratings: {
+      actionsPerMinute: 2,
+      blindness: 10,
+      rageLevel: 8,
+      lootAwareness: 0,
+      strategicIntegrity: 0,
+      commentary: 10,
+    },
+    classification: 'Historic dirt-hut incident',
+    timestamp: '2 weeks ago',
+  },
+]

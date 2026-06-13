@@ -1,0 +1,58 @@
+import type { CatProfile } from '../lib/types'
+
+export const seedCats: CatProfile[] = [
+  {
+    id: 'cat-1',
+    name: 'Director Whiskers',
+    title: 'Chief Nap Strategist · Territorial Account Manager',
+    avatar: '🐈',
+    color: '#4a6fa5',
+    location: 'Northeast Windowsill Office',
+    followers: 3847,
+  },
+  {
+    id: 'cat-2',
+    name: 'VP Fluffington',
+    title: 'Senior Treaty Negotiator · Peace Accord Architect',
+    avatar: '🐱',
+    color: '#7b6fa0',
+    location: 'Disputed Blanket District',
+    followers: 5120,
+  },
+  {
+    id: 'cat-3',
+    name: 'CEO Biscuit',
+    title: 'Executive Blanket Relocator · Strategic Asset Manager',
+    avatar: '😸',
+    color: '#c47a3a',
+    location: 'The Good Couch Corner',
+    followers: 9203,
+  },
+  {
+    id: 'cat-4',
+    name: 'Principal Mittens',
+    title: 'Independent Fence Consultant · Bird-Watch Analytics Lead',
+    avatar: '🐾',
+    color: '#4a8c5c',
+    location: 'Northwest Fence Line HQ',
+    followers: 2671,
+  },
+  {
+    id: 'cat-5',
+    name: 'COO Patches',
+    title: 'Chief Operational Napper · Sunbeam Portfolio Manager',
+    avatar: '😺',
+    color: '#a04a4a',
+    location: 'South-Facing Living Room',
+    followers: 4388,
+  },
+  {
+    id: 'cat-6',
+    name: 'SVP Thunderpaws',
+    title: 'International Lap Relations · Keyboard Governance Director',
+    avatar: '🐈‍⬛',
+    color: '#2c2c3e',
+    location: 'Remote (Currently On A Lap)',
+    followers: 7019,
+  },
+]
