@@ -56,6 +56,7 @@ export interface ClimbingReport {
 }
 
 export interface RatingFields {
+  [key: string]: number
   actionsPerMinute: number
   blindness: number
   rageLevel: number
