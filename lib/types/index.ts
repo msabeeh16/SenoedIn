@@ -65,14 +65,25 @@ export interface RatingFields {
   commentary: number
 }
 
+export interface GameComment {
+  id: string
+  authorName: string
+  authorTitle: string
+  content: string
+  timestamp: string
+  likes: number
+}
+
 export interface GameReview {
   id: string
   youtubeUrl: string
   videoId: string
+  thumbnailUrl?: string
   title: string
   ratings: RatingFields
   classification: string
   timestamp: string
+  comments?: GameComment[]
 }
 
 export interface Song {
@@ -84,6 +95,7 @@ export interface Song {
   spotifyEmbedUrl: string
   competencyLabel: string
   isFriendApproved: boolean
+  albumArtUrl?: string
 }
 
 export interface MusicSwipe {

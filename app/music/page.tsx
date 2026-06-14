@@ -8,7 +8,7 @@ import { Toast } from '../../components/ui/Toast'
 import { seedSongs, FRIEND_APPROVED_SONG_IDS } from '../../data/seed-songs'
 import { getStore } from '../../lib/storage'
 import type { Song, MusicSwipe } from '../../lib/types'
-import { Music } from 'lucide-react'
+import { Music, RotateCcw } from 'lucide-react'
 
 export default function MusicPage() {
   const [swipes, setSwipes] = useState<MusicSwipe[]>([])
@@ -69,10 +69,30 @@ export default function MusicPage() {
           <p className="text-xs text-seno-muted leading-relaxed">
             Grow your professional network through deeply concerning musical compatibility. Endorse tracks to build your playlist dossier.
           </p>
-          <div className="mt-3 flex items-center gap-3 text-[10px] text-seno-dim flex-wrap">
-            <span className="flex items-center gap-1">🎵 <strong className="text-seno-muted">{seedSongs.length}</strong> rotating tracks</span>
-            <span className="flex items-center gap-1">✦ <strong className="text-seno-gold">{endorsedSongs.length}</strong> endorsed</span>
-            <span className="flex items-center gap-1">🤝 <strong className="text-seno-text">{endorsedFriendApproved.length}/3</strong> Seno overlaps</span>
+          <div className="mt-3 flex items-center justify-between gap-3">
+            <div className="flex items-center gap-3 text-[10px] text-seno-dim flex-wrap">
+              <span className="flex items-center gap-1">🎵 <strong className="text-seno-muted">{seedSongs.length}</strong> rotating tracks</span>
+              <span className="flex items-center gap-1">✦ <strong className="text-seno-gold">{endorsedSongs.length}</strong> endorsed</span>
+              <span className="flex items-center gap-1">🤝 <strong className="text-seno-text">{endorsedFriendApproved.length}/3</strong> Seno overlaps</span>
+            </div>
+            {swipes.length > 0 && (
+              <button
+                onClick={async () => {
+                  if (typeof window !== 'undefined') {
+                    localStorage.removeItem('senoedin.musicSwipes')
+                  }
+                  setSwipes([])
+                  setDeckIndex(0)
+                  setModalShownAt(0)
+                  setToast('Dossier reset. Fresh start.')
+                }}
+                className="flex items-center gap-1 text-[10px] font-semibold px-2.5 py-1.5 rounded-lg transition-all shrink-0"
+                style={{ background: 'rgba(155,35,53,0.1)', border: '1px solid rgba(155,35,53,0.3)', color: '#C42A40' }}
+              >
+                <RotateCcw size={10} />
+                Reset
+              </button>
+            )}
           </div>
         </div>
       </div>

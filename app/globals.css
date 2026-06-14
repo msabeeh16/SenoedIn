@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* === BLACK & GOLD THEME === */
+  /* === BLACK, GOLD & GARNET THEME === */
   --color-seno-bg:          #0a0a0a;
   --color-seno-card:        #111111;
   --color-seno-card-2:      #1a1a1a;
@@ -14,6 +14,12 @@
   --color-seno-gold-dark:   #a07010;
   --color-seno-gold-tint:   #1a1300;
   --color-seno-gold-glow:   rgba(212,160,23,0.12);
+
+  /* Garnet accent — deep gem red */
+  --color-seno-garnet:        #9B2335;
+  --color-seno-garnet-light:  #C42A40;
+  --color-seno-garnet-tint:   rgba(155,35,53,0.10);
+  --color-seno-garnet-border: rgba(155,35,53,0.35);
 
   /* Text */
   --color-seno-text:        #f0ede4;

@@ -8,11 +8,11 @@ export const seedPosts: CatPost[] = [
     author: seedCats[0],
     content: `Thrilled to announce that after 14 hours of rigorous stakeholder alignment (sleep), I have successfully onboarded the left armrest as a permanent collaborative workspace. Q4 nap metrics are ahead of forecast.
 
-This would not have been possible without the support of my team (no one) and the sun patch that arrived at precisely 2:47pm.
+Pictured: Arthur, Chief Nap Officer, in peak form. This would not have been possible without the sun patch that arrived at precisely 2:47pm.
 
 The ottoman has been notified. Talks are ongoing.
 
-#AdvancedNapping #WorkspaceOptimization #ThoughtLeadership`,
+#AdvancedNapping #StrategicNapping #TerritoryExpansion`,
     image: '/seno-cat.jpg',
     timestamp: '2 hours ago',
     endorsements: 847,

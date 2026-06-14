@@ -4,6 +4,7 @@ export const seedClimbing: ClimbingReport[] = [
   {
     id: 'climb-1',
     imageName: 'quarterly-synergy.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1522163182402-834f871fd851?w=800&q=80&fit=crop',
     routeName: 'Quarterly Synergy Arete',
     fictionalGrade: 'V6 (Corporate)',
     style: 'Technical Arete / Power Endurance / Mandatory Suffering',
@@ -25,6 +26,7 @@ export const seedClimbing: ClimbingReport[] = [
   {
     id: 'climb-2',
     imageName: 'stakeholder-slab.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&q=80&fit=crop',
     routeName: 'The Stakeholder Slab',
     fictionalGrade: 'V4 (Anxious)',
     style: 'Pure Slab / Friction / Existential',
@@ -46,6 +48,7 @@ export const seedClimbing: ClimbingReport[] = [
   {
     id: 'climb-3',
     imageName: 'compliance-overhang.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1540553016722-983e48a2cd10?w=800&q=80&fit=crop',
     routeName: 'Compliance Overhang',
     fictionalGrade: 'V5 (Regulated)',
     style: 'Steep Overhang / Lock-off Dependent / Highly Documented',
@@ -67,6 +70,7 @@ export const seedClimbing: ClimbingReport[] = [
   {
     id: 'climb-4',
     imageName: 'deep-work-roof.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1516592673884-4a382d1124c2?w=800&q=80&fit=crop',
     routeName: 'The Deep Work Roof',
     fictionalGrade: 'V9 (Aspirational)',
     style: 'Roof Climbing / Full Suspension / Focus Dependent',
@@ -88,6 +92,7 @@ export const seedClimbing: ClimbingReport[] = [
   {
     id: 'climb-5',
     imageName: 'playground-traverse.jpg',
+    imageUrl: '/playground.jpeg',
     routeName: 'The Monkey Bar Meridian',
     fictionalGrade: 'V3 (Nostalgic)',
     style: 'Bar Traverse / Grip Strength / Public Spectacle',
@@ -109,6 +114,7 @@ export const seedClimbing: ClimbingReport[] = [
   {
     id: 'climb-6',
     imageName: 'oak-tree.jpg',
+    imageUrl: 'https://images.unsplash.com/photo-1548438294-1ad5d5f4f063?w=800&q=80&fit=crop',
     routeName: 'The Annual Oak (Classic Line)',
     fictionalGrade: 'V? (Unrated, Nature Does Not Grade)',
     style: 'Free Solo / Traditional / Bark-Dependent / Seasonal',

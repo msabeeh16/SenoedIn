@@ -13,6 +13,7 @@ export default function FeedPage() {
   const [posts, setPosts] = useState<CatPost[]>([])
   const [loaded, setLoaded] = useState(false)
   const [toast, setToast] = useState<string | null>(null)
+  const [selectedTag, setSelectedTag] = useState<string | null>(null)
 
   useEffect(() => {
     async function load() {
@@ -60,6 +61,10 @@ export default function FeedPage() {
     )
   }
 
+  const filteredPosts = selectedTag
+    ? posts.filter(p => p.content.toLowerCase().includes(selectedTag.toLowerCase()))
+    : posts
+
   const trending = [
     { tag: '#StrategicNapping',     stat: '2.4k endorsements', hot: true  },
     { tag: '#TerritoryExpansion',   stat: '↑ 847 this week',   hot: true  },
@@ -80,24 +85,37 @@ export default function FeedPage() {
         </p>
       </div>
       <div className="flex gap-2 px-4 pb-4 overflow-x-auto" style={{ scrollbarWidth: 'none' }}>
-        {trending.map(({ tag, stat, hot }) => (
-          <button
-            key={tag}
-            onClick={() => setToast(`${tag} briefing added to your demo agenda.`)}
-            className="flex-shrink-0 rounded-xl px-3 py-2 text-left transition-colors"
-            style={{
-              background: hot ? 'rgba(212,160,23,0.08)' : '#111111',
-              border: `1px solid ${hot ? 'rgba(212,160,23,0.3)' : '#1e1e1e'}`,
-            }}
-          >
-            <div className="flex items-center gap-1 mb-0.5">
-              {hot && <span style={{ color: '#d4a017', fontSize: 9 }}>🔥</span>}
-              <span className="text-[11px] font-bold" style={{ color: hot ? '#e8b420' : '#f0ede4' }}>{tag}</span>
-            </div>
-            <p className="text-[10px]" style={{ color: '#555555' }}>{stat}</p>
-          </button>
-        ))}
+        {trending.map(({ tag, stat, hot }) => {
+          const isActive = selectedTag === tag
+          return (
+            <button
+              key={tag}
+              onClick={() => setSelectedTag(isActive ? null : tag)}
+              className="flex-shrink-0 rounded-xl px-3 py-2 text-left transition-all"
+              style={{
+                background: isActive ? 'rgba(212,160,23,0.18)' : hot ? 'rgba(212,160,23,0.08)' : '#111111',
+                border: `1px solid ${isActive ? 'rgba(212,160,23,0.7)' : hot ? 'rgba(212,160,23,0.3)' : '#1e1e1e'}`,
+                transform: isActive ? 'scale(1.03)' : 'scale(1)',
+              }}
+            >
+              <div className="flex items-center gap-1 mb-0.5">
+                {hot && <span style={{ color: '#d4a017', fontSize: 9 }}>🔥</span>}
+                <span className="text-[11px] font-bold" style={{ color: isActive ? '#d4a017' : hot ? '#e8b420' : '#f0ede4' }}>{tag}</span>
+              </div>
+              <p className="text-[10px]" style={{ color: '#555555' }}>{isActive ? 'Tap to clear filter' : stat}</p>
+            </button>
+          )
+        })}
       </div>
+      {selectedTag && (
+        <div className="px-4 pb-3 flex items-center gap-2">
+          <span className="text-xs" style={{ color: '#888' }}>
+            Showing {filteredPosts.length} post{filteredPosts.length !== 1 ? 's' : ''} for
+            <span style={{ color: '#d4a017' }}> {selectedTag}</span>
+          </span>
+          <button onClick={() => setSelectedTag(null)} className="text-[10px] hover:opacity-70" style={{ color: '#555' }}>✕ clear</button>
+        </div>
+      )}
 
       <div className="px-3 mb-4">
         <PostComposer onPublish={handlePublish} />
@@ -110,7 +128,7 @@ export default function FeedPage() {
         </div>
       ) : (
         <div className="px-3 space-y-4">
-          {posts.map(post => (
+          {filteredPosts.map(post => (
             <PostCard
               key={post.id}
               post={post}

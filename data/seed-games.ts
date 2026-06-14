@@ -5,6 +5,7 @@ export const seedGames: GameReview[] = [
     id: 'game-1',
     youtubeUrl: 'https://www.youtube.com/watch?v=Qdmqa9OHBzA',
     videoId: 'Qdmqa9OHBzA',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=800&q=80&fit=crop',
     title: 'Stampylonghead — Sky Den Ep.1: "A Good Start"',
     ratings: {
       actionsPerMinute: 4,
@@ -16,11 +17,17 @@ export const seedGames: GameReview[] = [
     },
     classification: 'Promising contributor',
     timestamp: '1 day ago',
+    comments: [
+      { id: 'gc-1-1', authorName: 'Avani Kabra', authorTitle: 'Chief Correctness Officer', content: 'The commentary is a 10 but I flagged the loot blindness in the first two minutes. This was predictable.', timestamp: '22 hours ago', likes: 89 },
+      { id: 'gc-1-2', authorName: 'Big T', authorTitle: 'Chronically Online', content: 'stampy is the goat no cap 🐱 this is unironically peak content fr fr', timestamp: '18 hours ago', likes: 234 },
+      { id: 'gc-1-3', authorName: 'Dih', authorTitle: 'Chill Specialist', content: 'gave this man a 10 for commentary and I stand by it', timestamp: '12 hours ago', likes: 3201 },
+    ],
   },
   {
     id: 'game-2',
     youtubeUrl: 'https://www.youtube.com/watch?v=Wq8v0S_SMNE',
     videoId: 'Wq8v0S_SMNE',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&q=80&fit=crop',
     title: 'Stampylonghead — Diamond Dimensions Ep.1: Resource Assessment',
     ratings: {
       actionsPerMinute: 5,
@@ -32,6 +39,11 @@ export const seedGames: GameReview[] = [
     },
     classification: 'Competent but insufficiently dramatic',
     timestamp: '3 days ago',
+    comments: [
+      { id: 'gc-2-1', authorName: 'Pringle Ghatiya', authorTitle: 'Always On Time (Except To Hackathons)', content: "The strategic integrity score of 8 is generous. But the pitch — the way he sets up the world — that's where the real skill is.", timestamp: '3 days ago', likes: 112 },
+      { id: 'gc-2-2', authorName: 'Evie Graham', authorTitle: 'Head of Emotional Support', content: 'A rage level of 1?? He is so calm and I respect him deeply 🥺', timestamp: '2 days ago', likes: 567 },
+      { id: 'gc-2-3', authorName: 'Dih', authorTitle: 'Chill Specialist', content: 'rage level 1 is literally a superpower', timestamp: '2 days ago', likes: 4892 },
+    ],
   },
   {
     id: 'game-3',
@@ -48,11 +60,17 @@ export const seedGames: GameReview[] = [
     },
     classification: 'Loot blindness documented',
     timestamp: '5 days ago',
+    comments: [
+      { id: 'gc-3-1', authorName: 'Avani Kabra', authorTitle: 'Chief Correctness Officer', content: 'Loot blindness of 8 is still an undercount. I have the timestamps. I have always had the timestamps.', timestamp: '5 days ago', likes: 203 },
+      { id: 'gc-3-2', authorName: 'Yuvi Goel', authorTitle: 'Chief Aura Officer', content: 'nonchalant loot blindness. admirable consistency.', timestamp: '4 days ago', likes: 341 },
+      { id: 'gc-3-3', authorName: 'Hema Dassani', authorTitle: 'Accidental Intelligence Lead', content: 'wait is the YouTube link for this one a rick roll... should I not have noticed that 😬', timestamp: '3 days ago', likes: 2891 },
+    ],
   },
   {
     id: 'game-4',
     youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     videoId: 'dQw4w9WgXcQ',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=800&q=80&fit=crop',
     title: 'Bed Wars Solo — Strategic Fortress Protocol (Gone Wrong)',
     ratings: {
       actionsPerMinute: 9,
@@ -64,11 +82,16 @@ export const seedGames: GameReview[] = [
     },
     classification: 'Executive intervention required',
     timestamp: '1 week ago',
+    comments: [
+      { id: 'gc-4-1', authorName: 'Big T', authorTitle: 'Chronically Online', content: 'strategic integrity of 2 hits different when the entire fortress was made of dirt 💀 no cap this is me every game', timestamp: '1 week ago', likes: 1203 },
+      { id: 'gc-4-2', authorName: 'Ishan Shah', authorTitle: 'VP of Eventual Responses', content: 'sorry just saw this. the rage level of 8 is giving me anxiety and I was not even playing.', timestamp: '5 days ago (sent 2 weeks late)', likes: 445 },
+    ],
   },
   {
     id: 'game-5',
     youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     videoId: 'dQw4w9WgXcQ',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1593305841991-05c297ba4575?w=800&q=80&fit=crop',
     title: 'Geometry Dash — Electrodynamix Full Completion Attempt',
     ratings: {
       actionsPerMinute: 10,
@@ -80,11 +103,17 @@ export const seedGames: GameReview[] = [
     },
     classification: 'Executive intervention required',
     timestamp: '2 weeks ago',
+    comments: [
+      { id: 'gc-5-1', authorName: 'Shriya Shukla', authorTitle: 'West Coast Dance Lead · California Division', content: 'the actions per minute of 10 is giving main character energy. I respect it from California 💃', timestamp: '2 weeks ago', likes: 678 },
+      { id: 'gc-5-2', authorName: 'Manahil Sabeeh', authorTitle: 'Full Stack Developer', content: 'rage level 9 with a loot awareness of 10 is the most chaotic combination possible. this is an achievement.', timestamp: '2 weeks ago', likes: 1892 },
+      { id: 'gc-5-3', authorName: 'Dih', authorTitle: 'Chill Specialist', content: 'rage level 9 and they still scored 10 on loot awareness is wild work', timestamp: '2 weeks ago', likes: 6203 },
+    ],
   },
   {
     id: 'game-6',
     youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     videoId: 'dQw4w9WgXcQ',
+    thumbnailUrl: 'https://images.unsplash.com/photo-1535498730771-e735b998cd64?w=800&q=80&fit=crop',
     title: 'Minecraft Hardcore — The Historic Dirt-Hut Chronicles',
     ratings: {
       actionsPerMinute: 2,
@@ -96,5 +125,10 @@ export const seedGames: GameReview[] = [
     },
     classification: 'Historic dirt-hut incident',
     timestamp: '3 weeks ago',
+    comments: [
+      { id: 'gc-6-1', authorName: 'Pringle Ghatiya', authorTitle: 'Always On Time (Except To Hackathons)', content: 'loot awareness 0 and strategic integrity 0 but commentary 10 is the most honest review I have ever read. The pitch is immaculate. The execution is catastrophic.', timestamp: '3 weeks ago', likes: 892 },
+      { id: 'gc-6-2', authorName: 'Avani Kabra', authorTitle: 'Chief Correctness Officer', content: 'I said a dirt hut was not a viable long-term strategy. I said this. In writing. The record shows I said this.', timestamp: '3 weeks ago', likes: 1203 },
+      { id: 'gc-6-3', authorName: 'Dih', authorTitle: 'Chill Specialist', content: 'loot awareness zero in HARDCORE. this is a classification of its own', timestamp: '2 weeks ago', likes: 9847 },
+    ],
   },
 ]

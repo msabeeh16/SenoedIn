@@ -94,17 +94,32 @@ export function SwipeCard({ song, onEndorse, onDecline }: SwipeCardProps) {
         </div>
         <div
           className="absolute inset-0 z-20 rounded-3xl flex items-start justify-start p-6 pointer-events-none"
-          style={{ opacity: declineOpacity, background: 'linear-gradient(135deg, rgba(239,68,68,0.35) 0%, transparent 60%)' }}
+          style={{ opacity: declineOpacity, background: 'linear-gradient(135deg, rgba(155,35,53,0.4) 0%, transparent 60%)' }}
         >
-          <div className="border-4 border-red-400 rounded-xl px-4 py-2 rotate-[-12deg]">
-            <span className="text-red-400 font-black text-2xl tracking-widest">PASS</span>
+          <div className="rounded-xl px-4 py-2 rotate-[-12deg]" style={{ border: '4px solid #C42A40' }}>
+            <span className="font-black text-2xl tracking-widest" style={{ color: '#C42A40' }}>PASS</span>
           </div>
         </div>
 
-        <div className="h-36 bg-gradient-to-br from-seno-card-2 to-black flex flex-col items-center justify-center gap-2 relative overflow-hidden pointer-events-none">
-          <div className="absolute inset-0 opacity-5"
-            style={{ backgroundImage: 'radial-gradient(circle at 30% 40%, #d4a017 0%, transparent 60%), radial-gradient(circle at 70% 60%, #d4a017 0%, transparent 60%)' }} />
-          <span className="text-5xl">🎵</span>
+        <div className="relative h-52 overflow-hidden pointer-events-none">
+          {song.albumArtUrl ? (
+            <>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={song.albumArtUrl}
+                alt={`${song.title} album art`}
+                className="w-full h-full object-cover"
+                onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-seno-card via-transparent to-transparent opacity-80" />
+            </>
+          ) : (
+            <div className="w-full h-full bg-gradient-to-br from-seno-card-2 to-black flex items-center justify-center">
+              <div className="absolute inset-0 opacity-5"
+                style={{ backgroundImage: 'radial-gradient(circle at 30% 40%, #d4a017 0%, transparent 60%), radial-gradient(circle at 70% 60%, #d4a017 0%, transparent 60%)' }} />
+              <span className="text-5xl">🎵</span>
+            </div>
+          )}
         </div>
 
         <div className="p-5 space-y-3 pointer-events-none">
@@ -143,7 +158,7 @@ export function SwipeCard({ song, onEndorse, onDecline }: SwipeCardProps) {
         <div className="flex gap-3 px-5 pb-5 pointer-events-auto">
           <button
             onClick={() => triggerExit('left')}
-            className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-seno-card-2 border border-seno-border text-seno-muted hover:border-red-700/50 hover:text-red-400 hover:bg-red-950/20 transition-all font-semibold text-sm active:scale-95"
+            className="flex-1 flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-seno-card-2 border border-seno-border text-seno-muted hover:border-seno-garnet/50 hover:text-seno-garnet-light hover:bg-seno-garnet-tint transition-all font-semibold text-sm active:scale-95"
           >
             <X size={20} />
             Pass

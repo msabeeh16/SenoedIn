@@ -112,23 +112,48 @@ export function RouteUploader({ onReport }: RouteUploaderProps) {
         </div>
 
         {phase === 'idle' && (
-          <div className="grid grid-cols-2 gap-3">
-            <label htmlFor="wall-camera" className="cursor-pointer">
-              <div className="border-2 border-dashed border-seno-border hover:border-seno-gold/50 rounded-2xl p-6 text-center hover:bg-seno-gold-tint transition-all flex flex-col items-center gap-2">
-                <Camera size={28} className="text-seno-gold" />
-                <p className="text-xs font-semibold text-seno-text">Take Photo</p>
-                <p className="text-[10px] text-seno-dim">Rear camera</p>
-              </div>
-              <input id="wall-camera" ref={cameraRef} type="file" accept="image/*" capture="environment" onChange={handleFile} className="sr-only" />
-            </label>
-            <label htmlFor="wall-gallery" className="cursor-pointer">
-              <div className="border-2 border-dashed border-seno-border hover:border-seno-gold/50 rounded-2xl p-6 text-center hover:bg-seno-gold-tint transition-all flex flex-col items-center gap-2">
-                <Upload size={28} className="text-seno-muted" />
-                <p className="text-xs font-semibold text-seno-text">Upload Image</p>
-                <p className="text-[10px] text-seno-dim">From gallery</p>
-              </div>
-              <input id="wall-gallery" ref={fileRef} type="file" accept="image/*" onChange={handleFile} className="sr-only" />
-            </label>
+          <div className="space-y-3">
+            <div className="grid grid-cols-2 gap-3">
+              <label htmlFor="wall-camera" className="cursor-pointer">
+                <div className="border-2 border-dashed border-seno-border hover:border-seno-gold/50 rounded-2xl p-6 text-center hover:bg-seno-gold-tint transition-all flex flex-col items-center gap-2">
+                  <Camera size={28} className="text-seno-gold" />
+                  <p className="text-xs font-semibold text-seno-text">Take Photo</p>
+                  <p className="text-[10px] text-seno-dim">Rear camera</p>
+                </div>
+                <input id="wall-camera" ref={cameraRef} type="file" accept="image/*" capture="environment" onChange={handleFile} className="sr-only" />
+              </label>
+              <label htmlFor="wall-gallery" className="cursor-pointer">
+                <div className="border-2 border-dashed border-seno-border hover:border-seno-gold/50 rounded-2xl p-6 text-center hover:bg-seno-gold-tint transition-all flex flex-col items-center gap-2">
+                  <Upload size={28} className="text-seno-muted" />
+                  <p className="text-xs font-semibold text-seno-text">Upload Image</p>
+                  <p className="text-[10px] text-seno-dim">From gallery</p>
+                </div>
+                <input id="wall-gallery" ref={fileRef} type="file" accept="image/*" onChange={handleFile} className="sr-only" />
+              </label>
+            </div>
+            <button
+              onClick={async () => {
+                try {
+                  const res = await fetch('/playground.jpeg')
+                  const blob = await res.blob()
+                  const reader = new FileReader()
+                  reader.onload = ev => {
+                    setImagePreview(ev.target?.result as string)
+                    setImageName('playground.jpeg')
+                    setPhase('preview')
+                  }
+                  reader.readAsDataURL(blob)
+                } catch {
+                  // fallback: just set a name and go to scanning with no image
+                  setImageName('playground.jpeg')
+                  handleAnalyze()
+                }
+              }}
+              className="w-full flex items-center justify-center gap-2 py-3 rounded-2xl text-sm font-bold transition-all"
+              style={{ background: 'rgba(212,160,23,0.08)', border: '1px solid rgba(212,160,23,0.4)', color: '#d4a017' }}
+            >
+              🏞️ Demo: Analyze Playground Photo
+            </button>
           </div>
         )}
 

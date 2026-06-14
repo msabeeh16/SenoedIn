@@ -11,13 +11,9 @@ export const seedProfile: ProfileData = {
   routesImagined: 14,
   yearningAlignment: 87,
   escalatedIncidents: 32,
-  about: `Results-driven professional with a documented history of strategic napping, advanced fence monitoring, and unsolicited commentary on Let's Plays. Known for transforming ambiguous vibes into actionable dossiers and maintaining a 94% escalation rate on interpersonal disputes involving blankets.
+  about: `Results-driven professional with a 94% escalation rate on blanket disputes and a documented history of unsolicited climbing beta. Core competencies: identifying loot that was right there, generating post-game debriefs for players who cannot hear me, and maintaining 87% yearning alignment with the current music landscape.
 
-Currently accepting connections from cats with a minimum of two unresolved territorial disputes. Open to collaborative opportunities in the fields of gaming retrospectives, climbing route imagining, and emotionally complex playlist curation.
-
-Core competencies include: identifying loot that clearly should have been picked up, generating post-game debriefs for players who cannot hear me, and maintaining approximately 87% yearning alignment with the current music landscape.
-
-Available for consultation regarding: fence-line protocols, advanced napping methodology, and whether that route is "probably a V4 or honestly maybe harder."`,
+Open to connections from cats with at least two unresolved territorial disputes. Available for consultation on fence-line protocols, route grades, and whether that really was a V4.`,
   experience: [
     {
       id: 'exp-1',

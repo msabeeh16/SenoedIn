@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { seedProfile } from '../../data/seed-profile'
 import { Badge } from '../../components/ui/Badge'
 import { Button } from '../../components/ui/Button'
-import { MapPin, Eye, Users, Award, Mountain, Music, Gamepad2, Lock } from 'lucide-react'
+import { MapPin, Eye, Users, Award, Mountain, Music, Gamepad2, Lock, Cat } from 'lucide-react'
 import Link from 'next/link'
 import { Toast } from '../../components/ui/Toast'
 
@@ -18,42 +18,49 @@ export default function ProfilePage() {
     <div className="max-w-xl mx-auto px-3 py-4 space-y-4">
       {/* Hero card */}
       <div className="bg-seno-card border border-seno-border rounded-2xl overflow-hidden">
-        {/* Gold banner */}
-        <div className="h-28 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #1a1300 0%, #2a1a00 50%, #0a0a0a 100%)' }}>
-          <div className="absolute inset-0 opacity-20"
-            style={{ backgroundImage: 'radial-gradient(circle at 30% 60%, #d4a017 1px, transparent 1px), radial-gradient(circle at 70% 30%, #d4a017 1px, transparent 1px)', backgroundSize: '30px 30px' }} />
-          <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-seno-card to-transparent" />
+        {/* Banner — garnet-to-gold gradient with dot pattern */}
+        <div className="h-32 relative overflow-hidden"
+          style={{ background: 'linear-gradient(135deg, #1a0006 0%, #2a0a00 30%, #1a1300 65%, #0a0a0a 100%)' }}>
+          <div className="absolute inset-0 opacity-25"
+            style={{ backgroundImage: 'radial-gradient(circle, #9B2335 1px, transparent 1px), radial-gradient(circle, #d4a017 1px, transparent 1px)', backgroundSize: '28px 28px, 56px 56px', backgroundPosition: '0 0, 14px 14px' }} />
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(155,35,53,0.3) 0%, transparent 50%, rgba(212,160,23,0.2) 100%)' }} />
+          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-seno-card to-transparent" />
         </div>
+
         <div className="px-4 pb-5">
-          <div className="flex items-end justify-between -mt-10 mb-4 flex-wrap gap-2">
-            <div className="w-20 h-20 rounded-full bg-seno-gold border-4 border-seno-card flex items-center justify-center text-[#0a0a0a] text-2xl font-black shadow-lg animate-gold-glow">
-              {p.avatarInitials}
+          <div className="flex items-end justify-between -mt-12 mb-4 flex-wrap gap-2">
+            <div className="relative">
+              <div className="w-20 h-20 rounded-full bg-seno-gold border-4 border-seno-card flex items-center justify-center text-[#0a0a0a] text-2xl font-black shadow-lg animate-gold-glow">
+                {p.avatarInitials}
+              </div>
+              {/* Online indicator */}
+              <div className="absolute bottom-1 right-1 w-4 h-4 rounded-full border-2 border-seno-card" style={{ background: '#22c55e' }} />
             </div>
             <div className="flex gap-2 flex-wrap mt-8">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => {
-                  setConnected(value => !value)
-                  setToast(connected ? 'Connection request withdrawn.' : 'Connection request accepted for demo purposes.')
+                  setConnected(v => !v)
+                  setToast(connected ? 'Connection request withdrawn.' : 'Connection request sent.')
                 }}
               >
-                {connected ? 'Connected' : 'Connect'}
+                {connected ? '✓ Connected' : 'Connect'}
               </Button>
               <Button
                 size="sm"
                 onClick={() => {
-                  setEndorsed(value => !value)
-                  setToast(endorsed ? 'Profile endorsement removed.' : 'Profile endorsed.')
+                  setEndorsed(v => !v)
+                  setToast(endorsed ? 'Profile endorsement removed.' : 'Profile endorsed. +1 to their nap metrics.')
                 }}
               >
-                {endorsed ? 'Endorsed' : 'Endorse'}
+                {endorsed ? '✓ Endorsed' : 'Endorse'}
               </Button>
             </div>
           </div>
 
           <h1 className="text-xl font-black text-seno-text">{p.name}</h1>
-          <p className="text-sm text-seno-muted mt-1">{p.headline}</p>
+          <p className="text-sm text-seno-muted mt-0.5">{p.headline}</p>
 
           <div className="flex items-center flex-wrap gap-3 mt-2 text-xs text-seno-dim">
             <span className="flex items-center gap-1"><MapPin size={11} />{p.location}</span>
@@ -68,6 +75,41 @@ export default function ProfilePage() {
         </div>
       </div>
 
+      {/* Arthur — cat companion card */}
+      <div className="rounded-2xl overflow-hidden" style={{ background: '#111111', border: '1px solid rgba(155,35,53,0.35)' }}>
+        <div style={{ height: 2, background: 'linear-gradient(90deg, #9B2335, #d4a017, transparent)' }} />
+        <div className="p-4">
+          <div className="flex items-center gap-2 mb-3">
+            <Cat size={14} style={{ color: '#9B2335' }} />
+            <h2 className="font-bold text-sm" style={{ color: '#f0ede4' }}>Professional Associate</h2>
+          </div>
+          <div className="flex gap-3 items-center">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/seno-cat.jpg"
+              alt="Arthur"
+              className="rounded-xl object-cover shrink-0"
+              style={{ width: 80, height: 80, border: '2px solid rgba(155,35,53,0.4)' }}
+            />
+            <div>
+              <div className="flex items-center gap-2 flex-wrap">
+                <h3 className="font-black text-base" style={{ color: '#f0ede4' }}>Arthur</h3>
+                <span className="text-[10px] px-2 py-0.5 rounded-full font-bold"
+                  style={{ background: 'rgba(155,35,53,0.15)', border: '1px solid rgba(155,35,53,0.4)', color: '#C42A40' }}>
+                  Chief Nap Officer
+                </span>
+              </div>
+              <p className="text-xs mt-1" style={{ color: '#888' }}>
+                Sun-patch specialist. Lap acquisition expert. Co-author of the 2:47pm Protocol.
+              </p>
+              <p className="text-[10px] mt-1.5" style={{ color: '#555' }}>
+                📍 Left armrest, southeast corner · Active
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Analytics */}
       <div className="bg-seno-card border border-seno-border rounded-2xl overflow-hidden">
         <div className="h-px bg-gradient-to-r from-transparent via-seno-gold/40 to-transparent" />
@@ -76,19 +118,19 @@ export default function ProfilePage() {
             <Eye size={14} className="text-seno-gold" />
             <h2 className="font-bold text-seno-text text-sm">Your Analytics</h2>
           </div>
-          <div className="grid grid-cols-2 gap-2 mb-3">
+          <div className="grid grid-cols-3 gap-2 mb-3">
             {[
-              { label: 'Profile views', value: p.profileViews.toLocaleString(), icon: '👁️' },
-              { label: 'Treaty violations', value: p.treatyViolations.toString(), icon: '📋' },
-              { label: 'Routes imagined', value: p.routesImagined.toString(), icon: '🧗' },
-              { label: 'Yearning alignment', value: `${p.yearningAlignment}%`, icon: '🎵' },
-              { label: 'Diamond incidents', value: p.escalatedIncidents.toString(), icon: '💎' },
-              { label: 'Endorsements', value: '284', icon: '👍' },
-            ].map(({ label, value, icon }) => (
-              <div key={label} className="bg-seno-card-2 rounded-xl p-3 border border-seno-border">
-                <div className="text-lg mb-1">{icon}</div>
-                <div className="text-xl font-black text-seno-gold">{value}</div>
-                <div className="text-[10px] text-seno-dim mt-0.5 leading-snug">{label}</div>
+              { label: 'Profile views', value: p.profileViews.toLocaleString(), icon: '👁️', accent: '#d4a017' },
+              { label: 'Treaty violations', value: p.treatyViolations.toString(), icon: '📋', accent: '#9B2335' },
+              { label: 'Routes imagined', value: p.routesImagined.toString(), icon: '🧗', accent: '#d4a017' },
+              { label: 'Yearning %', value: `${p.yearningAlignment}%`, icon: '🎵', accent: '#22c55e' },
+              { label: 'Diamond incidents', value: p.escalatedIncidents.toString(), icon: '💎', accent: '#9B2335' },
+              { label: 'Endorsements', value: '284', icon: '👍', accent: '#d4a017' },
+            ].map(({ label, value, icon, accent }) => (
+              <div key={label} className="rounded-xl p-3 border border-seno-border text-center" style={{ background: '#1a1a1a' }}>
+                <div className="text-base mb-1">{icon}</div>
+                <div className="text-lg font-black" style={{ color: accent }}>{value}</div>
+                <div className="text-[9px] mt-0.5 leading-snug" style={{ color: '#555' }}>{label}</div>
               </div>
             ))}
           </div>
@@ -100,8 +142,11 @@ export default function ProfilePage() {
       </div>
 
       {/* About */}
-      <div className="bg-seno-card border border-seno-border rounded-2xl p-4">
-        <h2 className="font-bold text-seno-text text-sm mb-3">About</h2>
+      <div className="rounded-2xl p-4" style={{ background: '#111111', border: '1px solid #1e1e1e' }}>
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-1 h-4 rounded-full" style={{ background: 'linear-gradient(180deg, #9B2335, #d4a017)' }} />
+          <h2 className="font-bold text-seno-text text-sm">About</h2>
+        </div>
         <div className="text-sm text-seno-muted leading-relaxed space-y-3">
           {p.about.split('\n\n').map((para, i) => (
             <p key={i}>{para}</p>
@@ -111,11 +156,15 @@ export default function ProfilePage() {
 
       {/* Experience */}
       <div className="bg-seno-card border border-seno-border rounded-2xl p-4">
-        <h2 className="font-bold text-seno-text text-sm mb-4">Experience</h2>
+        <div className="flex items-center gap-2 mb-4">
+          <div className="w-1 h-4 rounded-full" style={{ background: 'linear-gradient(180deg, #d4a017, #9B2335)' }} />
+          <h2 className="font-bold text-seno-text text-sm">Experience</h2>
+        </div>
         <div className="space-y-5">
           {p.experience.map(exp => (
             <div key={exp.id} className="flex gap-3">
-              <div className="w-10 h-10 rounded-xl bg-seno-gold-tint border border-seno-border-gold flex items-center justify-center text-seno-gold shrink-0">
+              <div className="w-10 h-10 rounded-xl border flex items-center justify-center shrink-0"
+                style={{ background: 'rgba(155,35,53,0.08)', borderColor: 'rgba(155,35,53,0.25)', color: '#C42A40' }}>
                 {exp.id === 'exp-1' ? <Users size={18} /> :
                  exp.id === 'exp-2' ? <Mountain size={18} /> :
                  exp.id === 'exp-3' ? <Gamepad2 size={18} /> :
@@ -139,37 +188,40 @@ export default function ProfilePage() {
           <h2 className="font-bold text-seno-text text-sm">Skills & Endorsements</h2>
         </div>
         <div className="space-y-4">
-          {p.skills.map(skill => (
-            <div key={skill.id} className="border-b border-seno-border last:border-0 pb-4 last:pb-0">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h3 className="text-sm font-semibold text-seno-text">{skill.name}</h3>
-                  <p className="text-[10px] text-seno-dim mt-0.5">
-                    Endorsed by {skill.endorsers.slice(0, 2).join(', ')}
-                    {skill.endorsers.length > 2 ? ` +${skill.endorsers.length - 2} more` : ''}
-                  </p>
+          {p.skills.map((skill, idx) => {
+            const barColor = idx % 3 === 0 ? '#d4a017' : idx % 3 === 1 ? '#9B2335' : '#a855f7'
+            return (
+              <div key={skill.id} className="border-b border-seno-border last:border-0 pb-4 last:pb-0">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-sm font-semibold text-seno-text">{skill.name}</h3>
+                    <p className="text-[10px] text-seno-dim mt-0.5">
+                      Endorsed by {skill.endorsers.slice(0, 2).join(', ')}
+                      {skill.endorsers.length > 2 ? ` +${skill.endorsers.length - 2} more` : ''}
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-lg font-black" style={{ color: barColor }}>{skill.endorsementCount}</span>
+                    <p className="text-[9px] text-seno-dim">endorsements</p>
+                  </div>
                 </div>
-                <div className="text-right">
-                  <span className="text-lg font-black text-seno-gold">{skill.endorsementCount}</span>
-                  <p className="text-[9px] text-seno-dim">endorsements</p>
+                <div className="mt-2 h-1 bg-seno-border rounded-full overflow-hidden">
+                  <div
+                    className="h-full rounded-full"
+                    style={{ width: `${Math.min(100, (skill.endorsementCount / 100) * 100)}%`, background: barColor }}
+                  />
                 </div>
               </div>
-              <div className="mt-2 h-1 bg-seno-border rounded-full overflow-hidden">
-                <div
-                  className="h-full rounded-full"
-                  style={{ width: `${Math.min(100, (skill.endorsementCount / 100) * 100)}%`, background: 'linear-gradient(90deg,#d4a017,#e8b820)' }}
-                />
-              </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
 
       {/* Activity */}
       <div className="bg-seno-card border border-seno-border rounded-2xl p-4">
-        <h2 className="font-bold text-seno-text text-sm mb-3">Activity</h2>
+        <h2 className="font-bold text-seno-text text-sm mb-3">Recent Activity</h2>
         <p className="text-xs text-seno-dim mb-4">{p.connections} cats are watching your escalations.</p>
-        <div className="space-y-2">
+        <div className="space-y-1">
           {[
             { text: 'Published route report: Compliance Overhang (V5 Regulated)', link: '/climbing', time: '1w ago', icon: '🧗' },
             { text: 'Endorsed Quarterly Synergy Arete as a "growth experience"', link: '/climbing', time: '2w ago', icon: '📋' },
@@ -177,7 +229,7 @@ export default function ProfilePage() {
             { text: 'Music compatibility dossier prepared for executive review', link: '/music', time: '3w ago', icon: '🎵' },
           ].map((item, i) => (
             <Link key={i} href={item.link} className="flex gap-3 group hover:bg-seno-card-2 rounded-xl p-2 -mx-2 transition-colors">
-              <span className="text-lg shrink-0">{item.icon}</span>
+              <span className="text-base shrink-0">{item.icon}</span>
               <div>
                 <p className="text-xs text-seno-text group-hover:text-seno-gold transition-colors">{item.text}</p>
                 <p className="text-[10px] text-seno-dim mt-0.5">{item.time}</p>
@@ -186,6 +238,7 @@ export default function ProfilePage() {
           ))}
         </div>
       </div>
+
       {toast && <Toast message={toast} onDismiss={() => setToast(null)} />}
     </div>
   )
