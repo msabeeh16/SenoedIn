@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { seedProfile } from '../../data/seed-profile'
 import { Badge } from '../../components/ui/Badge'
 import { Button } from '../../components/ui/Button'
-import { MapPin, Eye, Users, Award, Mountain, Music, Gamepad2, Lock, Cat } from 'lucide-react'
+import { MapPin, Eye, Users, Award, Mountain, Music, Gamepad2, Lock, Cat, TrendingUp, AlertTriangle, Heart, Diamond, ThumbsUp } from 'lucide-react'
 import Link from 'next/link'
 import { Toast } from '../../components/ui/Toast'
 
@@ -122,17 +122,17 @@ export default function ProfilePage() {
           </div>
           <div className="grid grid-cols-3 gap-2 mb-3">
             {[
-              { label: 'Profile views', value: p.profileViews.toLocaleString(), icon: '👁️', accent: '#d4a017' },
-              { label: 'Treaty violations', value: p.treatyViolations.toString(), icon: '📋', accent: '#9B2335' },
-              { label: 'Routes imagined', value: p.routesImagined.toString(), icon: '🧗', accent: '#d4a017' },
-              { label: 'Yearning %', value: `${p.yearningAlignment}%`, icon: '🎵', accent: '#22c55e' },
-              { label: 'Diamond incidents', value: p.escalatedIncidents.toString(), icon: '💎', accent: '#9B2335' },
-              { label: 'Endorsements', value: '284', icon: '👍', accent: '#d4a017' },
-            ].map(({ label, value, icon, accent }) => (
-              <div key={label} className="rounded-xl p-3 border border-seno-border text-center" style={{ background: '#1a1a1a' }}>
-                <div className="text-base mb-1">{icon}</div>
-                <div className="text-lg font-black" style={{ color: accent }}>{value}</div>
-                <div className="text-[9px] mt-0.5 leading-snug" style={{ color: '#555' }}>{label}</div>
+              { label: 'Profile views',     value: p.profileViews.toLocaleString(), icon: <TrendingUp size={13} />, accent: '#d4a017',  bg: 'rgba(212,160,23,0.08)',  border: 'rgba(212,160,23,0.2)' },
+              { label: 'Treaty violations', value: p.treatyViolations.toString(),   icon: <AlertTriangle size={13} />, accent: '#C42A40', bg: 'rgba(155,35,53,0.08)',  border: 'rgba(155,35,53,0.2)' },
+              { label: 'Routes imagined',   value: p.routesImagined.toString(),     icon: <Mountain size={13} />,      accent: '#d4a017',  bg: 'rgba(212,160,23,0.08)',  border: 'rgba(212,160,23,0.2)' },
+              { label: 'Yearning %',        value: `${p.yearningAlignment}%`,       icon: <Heart size={13} />,         accent: '#22c55e',  bg: 'rgba(34,197,94,0.08)',   border: 'rgba(34,197,94,0.2)' },
+              { label: 'Diamond incidents', value: p.escalatedIncidents.toString(), icon: <Diamond size={13} />,       accent: '#C42A40',  bg: 'rgba(155,35,53,0.08)',  border: 'rgba(155,35,53,0.2)' },
+              { label: 'Endorsements',      value: '284',                           icon: <ThumbsUp size={13} />,      accent: '#d4a017',  bg: 'rgba(212,160,23,0.08)',  border: 'rgba(212,160,23,0.2)' },
+            ].map(({ label, value, icon, accent, bg, border }) => (
+              <div key={label} className="rounded-xl p-3 text-center" style={{ background: bg, border: `1px solid ${border}` }}>
+                <div className="flex justify-center mb-1.5" style={{ color: accent }}>{icon}</div>
+                <div className="text-lg font-black leading-none" style={{ color: accent }}>{value}</div>
+                <div className="text-[9px] mt-1 leading-snug" style={{ color: '#666' }}>{label}</div>
               </div>
             ))}
           </div>
