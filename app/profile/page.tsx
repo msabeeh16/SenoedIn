@@ -15,6 +15,7 @@ export default function ProfilePage() {
   const [toast, setToast] = useState<string | null>(null)
 
   return (
+    <div className="min-h-screen" style={{ background: 'radial-gradient(ellipse 90% 40% at 50% 0%, rgba(212,160,23,0.11) 0%, transparent 50%), radial-gradient(ellipse 60% 35% at 5% 60%, rgba(155,35,53,0.1) 0%, transparent 50%), #0a0a0a' }}>
     <div className="max-w-xl mx-auto px-3 py-4 space-y-4">
       {/* Hero card */}
       <div className="bg-seno-card border border-seno-border rounded-2xl overflow-hidden">
@@ -250,6 +251,7 @@ export default function ProfilePage() {
       </div>
 
       {toast && <Toast message={toast} onDismiss={() => setToast(null)} />}
+    </div>
     </div>
   )
 }

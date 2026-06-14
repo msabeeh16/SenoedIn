@@ -27,6 +27,7 @@ export default function ClimbingPage() {
   const allReports = [...userReports, ...seedClimbing]
 
   return (
+    <div className="min-h-screen" style={{ background: 'radial-gradient(ellipse 70% 50% at 15% 85%, rgba(155,35,53,0.2) 0%, transparent 55%), radial-gradient(ellipse 50% 35% at 85% 10%, rgba(155,35,53,0.08) 0%, transparent 50%), #0a0a0a' }}>
     <div className="max-w-xl mx-auto px-3 py-4 space-y-4">
       {/* Header */}
       <div className="rounded-2xl overflow-hidden" style={{ background: '#111111', border: '1px solid #1e1e1e' }}>
@@ -76,6 +77,7 @@ export default function ClimbingPage() {
           </div>
         )}
       </div>
+    </div>
     </div>
   )
 }

@@ -237,6 +237,7 @@ export default function MessagesPage() {
   )
 
   return (
+    <div className="min-h-screen" style={{ background: 'radial-gradient(ellipse 60% 40% at 50% 0%, rgba(212,160,23,0.07) 0%, transparent 50%), radial-gradient(ellipse 40% 30% at 100% 100%, rgba(155,35,53,0.08) 0%, transparent 45%), #0a0a0a' }}>
     <div className="max-w-2xl mx-auto px-0 sm:px-3 py-0 sm:py-4">
       <div className="flex overflow-hidden sm:rounded-2xl" style={{ height: 'calc(100dvh - 120px)', minHeight: 400, border: '1px solid #1e1e1e', background: '#0a0a0a' }}>
         {/* Desktop two-panel */}
@@ -259,6 +260,7 @@ export default function MessagesPage() {
           {active ? chatView : threadList}
         </div>
       </div>
+    </div>
     </div>
   )
 }

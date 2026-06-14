@@ -77,6 +77,7 @@ export default function FeedPage() {
   ]
 
   return (
+    <div className="min-h-screen" style={{ background: 'radial-gradient(ellipse 80% 40% at 80% 0%, rgba(212,160,23,0.13) 0%, transparent 60%), radial-gradient(ellipse 50% 30% at 10% 90%, rgba(155,35,53,0.08) 0%, transparent 50%), #0a0a0a' }}>
     <div className="max-w-xl mx-auto py-4">
       {/* Trending in the Territory */}
       <div className="px-4 pb-1">
@@ -144,6 +145,7 @@ export default function FeedPage() {
         </div>
       )}
       {toast && <Toast message={toast} onDismiss={() => setToast(null)} />}
+    </div>
     </div>
   )
 }

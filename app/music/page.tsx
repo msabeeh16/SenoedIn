@@ -52,6 +52,7 @@ export default function MusicPage() {
   const currentSong = seedSongs[deckIndex]
 
   return (
+    <div className="min-h-screen" style={{ background: 'radial-gradient(ellipse 75% 50% at 25% 10%, rgba(155,35,53,0.22) 0%, transparent 55%), radial-gradient(ellipse 60% 45% at 80% 80%, rgba(168,85,247,0.15) 0%, transparent 50%), #0a0a0a' }}>
     <div className="max-w-xl mx-auto px-3 py-4 space-y-4">
       {/* Header */}
       <div className="rounded-2xl overflow-hidden" style={{ background: '#111111', border: '1px solid #1e1e1e' }}>
@@ -128,6 +129,7 @@ export default function MusicPage() {
       />
 
       {toast && <Toast message={toast} onDismiss={() => setToast(null)} />}
+    </div>
     </div>
   )
 }
