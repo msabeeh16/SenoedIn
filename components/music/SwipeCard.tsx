@@ -207,7 +207,7 @@ export function SwipeCard({ song, onEndorse, onDecline }: SwipeCardProps) {
         </div>
 
         {/* Audio preview player */}
-        <div className="px-5 pb-3 pointer-events-auto">
+        <div className="px-5 pb-3 pointer-events-auto" onPointerDown={e => e.stopPropagation()}>
           <div className="flex items-center gap-2.5 px-3 py-2 rounded-xl" style={{ background: '#1a1a1a', border: '1px solid #2a2a2a' }}>
             <button
               onClick={togglePlay}
