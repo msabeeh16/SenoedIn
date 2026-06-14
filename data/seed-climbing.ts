@@ -1,15 +1,17 @@
 import type { ClimbingReport } from '../lib/types'
 
-// Confirmed Unsplash climbing wall: photo-1564769662533-4f00a87b4056 (indoor gym, woman climbing overhang)
-// Tree: photo-1502082553048-f009c37129b9 (lone baobab)
-const GYM = 'https://images.unsplash.com/photo-1564769662533-4f00a87b4056'
-const TREE = 'https://images.unsplash.com/photo-1502082553048-f009c37129b9'
+// Confirmed Unsplash climbing photos (all verified as real JPEGs)
+const GYM1 = 'https://images.unsplash.com/photo-1564769662533-4f00a87b4056' // woman on overhang, Istanbul
+const GYM2 = 'https://images.unsplash.com/photo-1501450626433-39bbf117090e' // man on red wall
+const GYM3 = 'https://images.unsplash.com/photo-1571649123442-dc0e1965e037' // man in gray tank top
+const GYM4 = 'https://images.unsplash.com/photo-1696105538782-7815474f28e0' // man climbing
+const TREE = 'https://images.unsplash.com/photo-1502082553048-f009c37129b9' // lone baobab
 
 export const seedClimbing: ClimbingReport[] = [
   {
     id: 'climb-1',
     imageName: 'quarterly-synergy.jpg',
-    imageUrl: `${GYM}?w=800&h=600&q=85&fit=crop&crop=left`,
+    imageUrl: `${GYM1}?w=800&h=600&q=85&fit=crop`,
     routeName: 'Quarterly Synergy Arete',
     fictionalGrade: 'V6 (Corporate)',
     style: 'Technical Arete / Power Endurance',
@@ -37,7 +39,7 @@ export const seedClimbing: ClimbingReport[] = [
   {
     id: 'climb-2',
     imageName: 'stakeholder-slab.jpg',
-    imageUrl: `${GYM}?w=800&h=600&q=85&fit=crop&crop=right`,
+    imageUrl: `${GYM2}?w=800&h=600&q=85&fit=crop`,
     routeName: 'The Stakeholder Slab',
     fictionalGrade: 'V4 (Anxious)',
     style: 'Pure Slab / Friction / Existential',
@@ -65,7 +67,7 @@ export const seedClimbing: ClimbingReport[] = [
   {
     id: 'climb-3',
     imageName: 'compliance-overhang.jpg',
-    imageUrl: `${GYM}?w=800&h=600&q=85&fit=crop&crop=entropy`,
+    imageUrl: `${GYM3}?w=800&h=600&q=85&fit=crop`,
     routeName: 'Compliance Overhang',
     fictionalGrade: 'V5 (Regulated)',
     style: 'Steep Overhang / Lock-off Dependent',
@@ -93,7 +95,7 @@ export const seedClimbing: ClimbingReport[] = [
   {
     id: 'climb-4',
     imageName: 'deep-work-roof.jpg',
-    imageUrl: `${GYM}?w=800&h=600&q=85&fit=crop&crop=top`,
+    imageUrl: `${GYM4}?w=800&h=600&q=85&fit=crop`,
     routeName: 'The Deep Work Roof',
     fictionalGrade: 'V9 (Aspirational)',
     style: 'Roof Climbing / Full Suspension',
