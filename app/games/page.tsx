@@ -29,16 +29,17 @@ export default function GamesPage() {
   return (
     <div className="max-w-xl mx-auto px-3 py-4 space-y-4">
       {/* Header */}
-      <div className="bg-seno-card border border-seno-border rounded-2xl overflow-hidden">
-        <div className="h-px bg-gradient-to-r from-transparent via-seno-gold/40 to-transparent" />
+      <div className="rounded-2xl overflow-hidden" style={{ background: '#111111', border: '1px solid #1e1e1e' }}>
+        <div style={{ height: 2, background: 'linear-gradient(90deg, #d4a017, #e8b420 50%, transparent)' }} />
         <div className="p-4">
           <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 rounded-2xl bg-seno-gold-tint border border-seno-border-gold flex items-center justify-center">
-              <Gamepad2 size={20} className="text-seno-gold" />
+            <div className="w-11 h-11 rounded-2xl flex items-center justify-center shrink-0"
+              style={{ background: 'rgba(212,160,23,0.1)', border: '1px solid rgba(212,160,23,0.3)' }}>
+              <Gamepad2 size={20} style={{ color: '#d4a017' }} />
             </div>
             <div>
               <h1 className="text-base font-black text-seno-text">Watcher&apos;s Log</h1>
-              <p className="text-xs text-seno-dim">Backseat Gaming Analytics Division</p>
+              <p className="text-xs" style={{ color: '#d4a017' }}>Backseat Gaming Analytics Division</p>
             </div>
           </div>
           <p className="text-xs text-seno-muted leading-relaxed">
@@ -52,8 +53,9 @@ export default function GamesPage() {
       {/* Archive */}
       <div>
         <div className="flex items-center gap-2 mb-3 px-1">
+          <div className="w-0.5 h-3 rounded-full" style={{ background: 'linear-gradient(180deg, #d4a017, transparent)' }} />
           <h2 className="text-sm font-bold text-seno-text">Performance Audit Archive</h2>
-          <span className="text-[10px] text-seno-dim bg-seno-card border border-seno-border px-2 py-0.5 rounded-full">
+          <span className="text-[10px] px-2 py-0.5 rounded-full" style={{ background: 'rgba(212,160,23,0.08)', border: '1px solid rgba(212,160,23,0.2)', color: '#d4a017' }}>
             {allReviews.length} audits on file
           </span>
         </div>

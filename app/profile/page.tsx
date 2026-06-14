@@ -112,11 +112,11 @@ export default function ProfilePage() {
       </div>
 
       {/* Analytics */}
-      <div className="bg-seno-card border border-seno-border rounded-2xl overflow-hidden">
-        <div className="h-px bg-gradient-to-r from-transparent via-seno-gold/40 to-transparent" />
+      <div className="rounded-2xl overflow-hidden" style={{ background: '#111111', border: '1px solid #1e1e1e' }}>
+        <div style={{ height: 2, background: 'linear-gradient(90deg, #d4a017, #9B2335 60%, transparent)' }} />
         <div className="p-4">
           <div className="flex items-center gap-2 mb-3">
-            <Eye size={14} className="text-seno-gold" />
+            <Eye size={14} style={{ color: '#d4a017' }} />
             <h2 className="font-bold text-seno-text text-sm">Your Analytics</h2>
           </div>
           <div className="grid grid-cols-3 gap-2 mb-3">
@@ -156,7 +156,9 @@ export default function ProfilePage() {
       </div>
 
       {/* Experience */}
-      <div className="bg-seno-card border border-seno-border rounded-2xl p-4">
+      <div className="rounded-2xl overflow-hidden" style={{ background: '#111111', border: '1px solid #1e1e1e' }}>
+        <div style={{ height: 2, background: 'linear-gradient(90deg, #9B2335, #d4a017 60%, transparent)' }} />
+        <div className="p-4">
         <div className="flex items-center gap-2 mb-4">
           <div className="w-1 h-4 rounded-full" style={{ background: 'linear-gradient(180deg, #d4a017, #9B2335)' }} />
           <h2 className="font-bold text-seno-text text-sm">Experience</h2>
@@ -180,12 +182,15 @@ export default function ProfilePage() {
             </div>
           ))}
         </div>
+        </div>
       </div>
 
       {/* Skills */}
-      <div className="bg-seno-card border border-seno-border rounded-2xl p-4">
+      <div className="rounded-2xl overflow-hidden" style={{ background: '#111111', border: '1px solid #1e1e1e' }}>
+        <div style={{ height: 2, background: 'linear-gradient(90deg, #a855f7, #9B2335 50%, transparent)' }} />
+        <div className="p-4">
         <div className="flex items-center gap-2 mb-4">
-          <Award size={14} className="text-seno-gold" />
+          <Award size={14} style={{ color: '#a855f7' }} />
           <h2 className="font-bold text-seno-text text-sm">Skills & Endorsements</h2>
         </div>
         <div className="space-y-4">
@@ -216,11 +221,14 @@ export default function ProfilePage() {
             )
           })}
         </div>
+        </div>
       </div>
 
       {/* Activity */}
-      <div className="bg-seno-card border border-seno-border rounded-2xl p-4">
-        <h2 className="font-bold text-seno-text text-sm mb-3">Recent Activity</h2>
+      <div className="rounded-2xl overflow-hidden" style={{ background: '#111111', border: '1px solid #1e1e1e' }}>
+        <div style={{ height: 2, background: 'linear-gradient(90deg, #d4a017, transparent)' }} />
+        <div className="p-4">
+        <h2 className="font-bold text-seno-text text-sm mb-1">Recent Activity</h2>
         <p className="text-xs text-seno-dim mb-4">{p.connections} cats are watching your escalations.</p>
         <div className="space-y-1">
           {[
@@ -237,6 +245,7 @@ export default function ProfilePage() {
               </div>
             </Link>
           ))}
+        </div>
         </div>
       </div>
 

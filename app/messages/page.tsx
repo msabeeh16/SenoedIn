@@ -116,23 +116,26 @@ export default function MessagesPage() {
   const threadList = (
     <div className="flex flex-col h-full" style={{ background: '#0a0a0a' }}>
       <div className="px-4 pt-4 pb-3">
-        <div style={{ color: '#f0ede4', fontWeight: 800, fontSize: 16 }}>Messages</div>
-        <div style={{ color: '#555', fontSize: 11, marginTop: 2 }}>Your professional cat network</div>
+        <div className="flex items-center gap-2 mb-0.5">
+          <div className="w-0.5 h-4 rounded-full" style={{ background: 'linear-gradient(180deg, #9B2335, #d4a017)' }} />
+          <div style={{ color: '#f0ede4', fontWeight: 800, fontSize: 16 }}>Messages</div>
+        </div>
+        <div style={{ color: '#555', fontSize: 11, marginLeft: 10 }}>Your professional cat network</div>
       </div>
-      <div style={{ height: 1, background: '#1e1e1e', margin: '0 16px' }} />
+      <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, #9B2335 30%, #2a2a2a 70%, transparent)', margin: '0 16px' }} />
       <div className="flex-1 overflow-y-auto" style={{ scrollbarWidth: 'none' }}>
         {threads.map(t => (
           <button
             key={t.id}
             onClick={() => openThread(t)}
-            className="w-full flex items-center gap-3 px-4 py-3 text-left transition-colors"
-            style={{ borderBottom: '1px solid #111' }}
+            className="w-full flex items-center gap-3 px-4 py-3 text-left transition-colors relative"
+            style={{ borderBottom: '1px solid #111', borderLeft: t.unread > 0 ? '3px solid #9B2335' : '3px solid transparent' }}
             onMouseEnter={e => (e.currentTarget.style.background = '#111')}
             onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
           >
             <div
               className="w-12 h-12 rounded-full flex-shrink-0 overflow-hidden"
-              style={{ border: t.unread > 0 ? `2px solid ${GOLD}` : '2px solid #2a2a2a' }}
+              style={{ border: t.unread > 0 ? '2px solid #9B2335' : '2px solid #2a2a2a' }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={t.avatar} alt={t.name} className="w-full h-full object-cover" />
@@ -140,15 +143,15 @@ export default function MessagesPage() {
             <div className="flex-1 min-w-0">
               <div className="flex justify-between items-center">
                 <span style={{ color: '#f0ede4', fontSize: 13, fontWeight: t.unread > 0 ? 800 : 500 }} className="truncate">{t.name}</span>
-                <span style={{ color: '#555', fontSize: 10, flexShrink: 0, marginLeft: 8 }}>{t.time}</span>
+                <span style={{ color: t.unread > 0 ? '#888' : '#555', fontSize: 10, flexShrink: 0, marginLeft: 8 }}>{t.time}</span>
               </div>
               <div className="flex justify-between items-center mt-0.5">
-                <span className="truncate" style={{ color: t.unread > 0 ? '#f0ede4' : '#555', fontSize: 12, flex: 1, marginRight: 8 }}>
+                <span className="truncate" style={{ color: t.unread > 0 ? '#aaa' : '#555', fontSize: 12, flex: 1, marginRight: 8 }}>
                   {t.preview}
                 </span>
                 {t.unread > 0 && (
                   <div className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0"
-                    style={{ background: GOLD, color: '#0a0a0a', fontSize: 9, fontWeight: 900 }}>
+                    style={{ background: '#9B2335', color: '#f0ede4', fontSize: 9, fontWeight: 900 }}>
                     {t.unread}
                   </div>
                 )}
@@ -163,7 +166,7 @@ export default function MessagesPage() {
   const chatView = active && (
     <div className="flex flex-col h-full">
       {/* Header */}
-      <div className="flex items-center gap-3 px-4 py-3" style={{ borderBottom: '1px solid #1e1e1e' }}>
+      <div className="flex items-center gap-3 px-4 py-3" style={{ borderBottom: '1px solid #1e1e1e', background: '#0d0d0d' }}>
         <button onClick={() => setActiveId(null)} className="sm:hidden" style={{ color: '#888' }}>
           <ArrowLeft size={18} />
         </button>
@@ -171,9 +174,15 @@ export default function MessagesPage() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={active.avatar} alt={active.name} className="w-full h-full object-cover" />
         </div>
-        <div>
-          <div style={{ color: '#f0ede4', fontWeight: 800, fontSize: 14 }}>{active.name}</div>
-          <div style={{ color: '#22c55e', fontSize: 10 }}>● Online</div>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2">
+            <div style={{ color: '#f0ede4', fontWeight: 800, fontSize: 14 }} className="truncate">{active.name}</div>
+            <div className="flex items-center gap-1 px-1.5 py-0.5 rounded-full" style={{ background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.2)' }}>
+              <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#22c55e' }} />
+              <span style={{ color: '#22c55e', fontSize: 9, fontWeight: 600 }}>Online</span>
+            </div>
+          </div>
+          <div style={{ color: '#555', fontSize: 10 }} className="truncate">{active.title}</div>
         </div>
       </div>
 

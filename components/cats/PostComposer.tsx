@@ -75,7 +75,9 @@ export function PostComposer({ onPublish }: PostComposerProps) {
   }
 
   return (
-    <div className="bg-seno-card border border-seno-border rounded-2xl p-4">
+    <div className="rounded-2xl overflow-hidden" style={{ background: '#111111', border: '1px solid #1e1e1e' }}>
+      <div style={{ height: 2, background: 'linear-gradient(90deg, #d4a017, #9B2335 60%, transparent)' }} />
+    <div className="p-4">
       <div className="flex gap-3">
         <div className="w-10 h-10 rounded-full bg-seno-gold flex items-center justify-center text-[#0a0a0a] font-black text-sm shrink-0 animate-gold-glow">
           SE
@@ -132,6 +134,7 @@ export function PostComposer({ onPublish }: PostComposerProps) {
           </div>
         </div>
       </div>
+    </div>
     </div>
   )
 }

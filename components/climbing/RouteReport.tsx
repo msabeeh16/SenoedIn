@@ -57,8 +57,8 @@ export function RouteReport({ report }: RouteReportProps) {
         </div>
 
         {/* BETA box */}
-        <div className="rounded-xl p-3" style={{ background: '#1a1a1a', border: '1px solid #2a2a2a' }}>
-          <p className="text-[10px] font-bold tracking-widest mb-2" style={{ color: '#555' }}>BETA</p>
+        <div className="rounded-xl p-3" style={{ background: '#141414', border: '1px solid #2a2a2a', borderLeft: '2px solid rgba(155,35,53,0.5)' }}>
+          <p className="text-[9px] font-black tracking-[0.18em] mb-2 uppercase" style={{ color: '#9B2335' }}>Beta</p>
           <p className="text-sm leading-relaxed" style={{ color: '#f0ede4' }}>{report.beta}</p>
         </div>
 

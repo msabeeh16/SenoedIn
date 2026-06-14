@@ -54,26 +54,27 @@ export default function MusicPage() {
   return (
     <div className="max-w-xl mx-auto px-3 py-4 space-y-4">
       {/* Header */}
-      <div className="bg-seno-card border border-seno-border rounded-2xl overflow-hidden">
-        <div className="h-px bg-gradient-to-r from-transparent via-seno-gold/40 to-transparent" />
+      <div className="rounded-2xl overflow-hidden" style={{ background: '#111111', border: '1px solid #1e1e1e' }}>
+        <div style={{ height: 2, background: 'linear-gradient(90deg, #a855f7, #9B2335 50%, transparent)' }} />
         <div className="p-4">
           <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 rounded-2xl bg-seno-gold-tint border border-seno-border-gold flex items-center justify-center">
-              <Music size={20} className="text-seno-gold" />
+            <div className="w-11 h-11 rounded-2xl flex items-center justify-center shrink-0"
+              style={{ background: 'rgba(168,85,247,0.1)', border: '1px solid rgba(168,85,247,0.3)' }}>
+              <Music size={20} style={{ color: '#a855f7' }} />
             </div>
             <div>
               <h1 className="text-base font-black text-seno-text">Music Networking</h1>
-              <p className="text-xs text-seno-dim">Compatibility Analytics Division</p>
+              <p className="text-xs" style={{ color: '#a855f7' }}>Compatibility Analytics Division</p>
             </div>
           </div>
           <p className="text-xs text-seno-muted leading-relaxed">
             Grow your professional network through deeply concerning musical compatibility. Endorse tracks to build your playlist dossier.
           </p>
           <div className="mt-3 flex items-center justify-between gap-3">
-            <div className="flex items-center gap-3 text-[10px] text-seno-dim flex-wrap">
-              <span className="flex items-center gap-1">🎵 <strong className="text-seno-muted">{seedSongs.length}</strong> rotating tracks</span>
-              <span className="flex items-center gap-1">✦ <strong className="text-seno-gold">{endorsedSongs.length}</strong> endorsed</span>
-              <span className="flex items-center gap-1">🤝 <strong className="text-seno-text">{endorsedFriendApproved.length}/3</strong> Seno overlaps</span>
+            <div className="flex items-center gap-3 text-[10px] flex-wrap">
+              <span className="flex items-center gap-1" style={{ color: '#555' }}>🎵 <strong style={{ color: '#888' }}>{seedSongs.length}</strong> rotating tracks</span>
+              <span className="flex items-center gap-1 px-2 py-0.5 rounded-full" style={{ background: 'rgba(212,160,23,0.1)', border: '1px solid rgba(212,160,23,0.2)', color: '#888' }}>✦ <strong style={{ color: '#d4a017' }}>{endorsedSongs.length}</strong> endorsed</span>
+              <span className="flex items-center gap-1 px-2 py-0.5 rounded-full" style={{ background: 'rgba(155,35,53,0.08)', border: '1px solid rgba(155,35,53,0.2)', color: '#888' }}>🤝 <strong style={{ color: '#C42A40' }}>{endorsedFriendApproved.length}/3</strong> Seno overlaps</span>
             </div>
             {swipes.length > 0 && (
               <button

@@ -80,9 +80,12 @@ export default function FeedPage() {
     <div className="max-w-xl mx-auto py-4">
       {/* Trending in the Territory */}
       <div className="px-4 pb-1">
-        <p className="text-[10px] font-bold tracking-widest uppercase mb-2" style={{ color: '#555555' }}>
-          Trending in the Territory
-        </p>
+        <div className="flex items-center gap-2 mb-2">
+          <div className="w-0.5 h-3 rounded-full" style={{ background: 'linear-gradient(180deg, #9B2335, #d4a017)' }} />
+          <p className="text-[10px] font-bold tracking-widest uppercase" style={{ color: '#888' }}>
+            Trending in the Territory
+          </p>
+        </div>
       </div>
       <div className="flex gap-2 px-4 pb-4 overflow-x-auto" style={{ scrollbarWidth: 'none' }}>
         {trending.map(({ tag, stat, hot }) => {
@@ -91,18 +94,19 @@ export default function FeedPage() {
             <button
               key={tag}
               onClick={() => setSelectedTag(isActive ? null : tag)}
-              className="flex-shrink-0 rounded-xl px-3 py-2 text-left transition-all"
+              className="flex-shrink-0 rounded-xl px-3 py-2.5 text-left transition-all"
               style={{
-                background: isActive ? 'rgba(212,160,23,0.15)' : '#111111',
-                border: `1px solid ${isActive ? 'rgba(212,160,23,0.6)' : '#2a2a2a'}`,
+                background: isActive ? 'rgba(212,160,23,0.12)' : '#141414',
+                border: `1px solid ${isActive ? 'rgba(212,160,23,0.55)' : '#222'}`,
                 transform: isActive ? 'scale(1.03)' : 'scale(1)',
+                boxShadow: isActive ? '0 0 12px rgba(212,160,23,0.15)' : 'none',
               }}
             >
               <div className="flex items-center gap-1 mb-0.5">
                 {hot && <span style={{ fontSize: 9 }}>🔥</span>}
-                <span className="text-[11px] font-bold" style={{ color: isActive ? '#d4a017' : '#f0ede4' }}>{tag}</span>
+                <span className="text-[11px] font-bold" style={{ color: isActive ? '#d4a017' : '#e0ddd4' }}>{tag}</span>
               </div>
-              <p className="text-[10px]" style={{ color: '#555555' }}>{isActive ? 'tap to clear' : stat}</p>
+              <p className="text-[10px]" style={{ color: isActive ? '#888' : '#444' }}>{isActive ? 'tap to clear' : stat}</p>
             </button>
           )
         })}

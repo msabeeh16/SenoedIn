@@ -53,16 +53,20 @@ export function PostCard({ post, onEndorse, onComment, onNotify, className = '',
       className={`rounded-2xl overflow-hidden animate-fade-in-up ${className}`}
       style={{
         background: '#111111',
-        border: `1px solid ${endorsed ? 'rgba(212,160,23,0.3)' : '#2a2a2a'}`,
-        boxShadow: endorsed
+        border: `1px solid ${escalated ? 'rgba(155,35,53,0.35)' : endorsed ? 'rgba(212,160,23,0.3)' : '#2a2a2a'}`,
+        boxShadow: escalated
+          ? '0 0 0 1px rgba(155,35,53,0.08), 0 4px 24px rgba(0,0,0,0.4)'
+          : endorsed
           ? `0 0 0 1px rgba(212,160,23,0.08), 0 4px 24px rgba(0,0,0,0.4)`
           : '0 4px 24px rgba(0,0,0,0.3)',
         ...style,
       }}
     >
-      {/* Gold accent bar when endorsed */}
-      {endorsed && (
-        <div style={{ height: 2, background: `linear-gradient(90deg, ${GOLD}, ${GOLD_LIGHT}, transparent)` }} />
+      {/* Accent bar — gold when endorsed, garnet when escalated */}
+      {(endorsed || escalated) && (
+        <div style={{ height: 2, background: escalated
+          ? 'linear-gradient(90deg, #9B2335, #C42A40, transparent)'
+          : `linear-gradient(90deg, ${GOLD}, ${GOLD_LIGHT}, transparent)` }} />
       )}
 
       {/* Header */}
@@ -141,39 +145,37 @@ export function PostCard({ post, onEndorse, onComment, onNotify, className = '',
 
       {/* Actions */}
       <div className="flex items-center justify-around px-2 py-2">
-        {[
-          {
-            icon: <ThumbsUp size={15} />,
-            label: endorsed ? 'Endorsed ✦' : 'Endorse',
-            action: handleEndorse,
-            active: endorsed,
-          },
-          { icon: <MessageSquare size={15} />, label: 'Feedback', action: () => setShowComments(v => !v), active: showComments },
-          {
-            icon: <AlertTriangle size={15} />,
-            label: escalated ? 'Escalated' : 'Escalate',
-            action: () => {
-              setEscalated(value => !value)
-              onNotify?.(escalated ? 'Escalation withdrawn.' : 'Incident escalated for executive review.')
-            },
-            active: escalated,
-          },
-          { icon: <Share2 size={15} />, label: 'Forward', action: handleForward, active: false },
-        ].map(btn => (
-          <button
-            key={btn.label}
-            onClick={btn.action}
-            className="flex items-center gap-1 px-2 py-1 rounded-lg transition-colors"
-            style={{
-              color: btn.active ? GOLD : '#888888',
-              fontSize: 11,
-              fontWeight: btn.active ? 700 : 400,
-              background: btn.active ? 'rgba(212,160,23,0.08)' : 'transparent',
-            }}
-          >
-            {btn.icon} {btn.label}
-          </button>
-        ))}
+        <button
+          onClick={handleEndorse}
+          className="flex items-center gap-1 px-2 py-1.5 rounded-lg transition-colors"
+          style={{ color: endorsed ? GOLD : '#777', fontSize: 11, fontWeight: endorsed ? 700 : 400, background: endorsed ? 'rgba(212,160,23,0.08)' : 'transparent' }}
+        >
+          <ThumbsUp size={15} /> {endorsed ? 'Endorsed ✦' : 'Endorse'}
+        </button>
+        <button
+          onClick={() => setShowComments(v => !v)}
+          className="flex items-center gap-1 px-2 py-1.5 rounded-lg transition-colors"
+          style={{ color: showComments ? GOLD : '#777', fontSize: 11, fontWeight: showComments ? 700 : 400, background: showComments ? 'rgba(212,160,23,0.08)' : 'transparent' }}
+        >
+          <MessageSquare size={15} /> Feedback
+        </button>
+        <button
+          onClick={() => {
+            setEscalated(value => !value)
+            onNotify?.(escalated ? 'Escalation withdrawn.' : 'Incident escalated for executive review.')
+          }}
+          className="flex items-center gap-1 px-2 py-1.5 rounded-lg transition-colors"
+          style={{ color: escalated ? '#C42A40' : '#777', fontSize: 11, fontWeight: escalated ? 700 : 400, background: escalated ? 'rgba(155,35,53,0.1)' : 'transparent' }}
+        >
+          <AlertTriangle size={15} /> {escalated ? 'Escalated' : 'Escalate'}
+        </button>
+        <button
+          onClick={handleForward}
+          className="flex items-center gap-1 px-2 py-1.5 rounded-lg transition-colors"
+          style={{ color: '#777', fontSize: 11 }}
+        >
+          <Share2 size={15} /> Forward
+        </button>
       </div>
 
       {/* Comments */}
