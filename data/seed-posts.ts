@@ -199,6 +199,107 @@ The roadmap is clear. The pillow is warm. We move forward.
     ],
   },
   {
+    id: 'post-5b',
+    authorId: 'cat-2',
+    author: seedCats[1],
+    content: `I want to address something professionally and without emotion.
+
+It has come to my attention that certain parties — who I will not name (CEO Biscuit) — have been occupying the primary sun patch without prior notice, treaty amendment, or basic courtesy. I am not angry. I am disappointed. There is a legal distinction.
+
+A formal grievance has been filed with my internal compliance team (myself, sitting very upright). I expect a response by end of business today. After 4pm I will be napping but the grievance remains open.
+
+This is a professional platform and I am conducting myself accordingly.
+
+#WindowsillDiplomacy #SunPatchAlliance #FormalGrievance`,
+    image: 'https://placecats.com/404/300',
+    timestamp: '3 hours ago',
+    endorsements: 3847,
+    escalations: 2910,
+    comments: [
+      {
+        id: 'c-5b-1',
+        authorId: 'cat-3',
+        authorName: 'CEO Biscuit',
+        authorTitle: 'Executive Blanket Relocator · Strategic Asset Manager',
+        content: 'I appreciate you raising this professionally. My presence in the sun patch was fully within the agreed parameters of the Informal Couch Summit held last Tuesday. I have the receipts. They are physical receipts (a hair I left there). You are welcome.',
+        timestamp: '3 hours ago',
+        likes: 892,
+      },
+      {
+        id: 'c-5b-2',
+        authorId: 'cat-2',
+        authorName: 'VP Fluffington',
+        authorTitle: 'Senior Treaty Negotiator · Peace Accord Architect',
+        content: 'The Informal Couch Summit was not legally binding. I was there. I have reviewed the documentation (my memory). A hair does not constitute territorial claim under any framework I recognize.',
+        timestamp: '2 hours 58 minutes ago',
+        likes: 1203,
+      },
+      {
+        id: 'c-5b-3',
+        authorId: 'cat-3',
+        authorName: 'CEO Biscuit',
+        authorTitle: 'Executive Blanket Relocator · Strategic Asset Manager',
+        content: 'A hair is precedent. A hair is legacy. A HAIR IS THE LAW. I cannot believe I have to explain this.',
+        timestamp: '2 hours 55 minutes ago',
+        likes: 6721,
+      },
+      {
+        id: 'c-5b-4',
+        authorId: 'cat-2',
+        authorName: 'VP Fluffington',
+        authorTitle: 'Senior Treaty Negotiator · Peace Accord Architect',
+        content: 'I see we are done with the professional portion of this exchange.',
+        timestamp: '2 hours 53 minutes ago',
+        likes: 9034,
+      },
+      {
+        id: 'c-5b-5',
+        authorId: 'cat-3',
+        authorName: 'CEO Biscuit',
+        authorTitle: 'Executive Blanket Relocator · Strategic Asset Manager',
+        content: 'YOU MOVED THE BLANKET IN 2022. WE ALL REMEMBER.',
+        timestamp: '2 hours 51 minutes ago',
+        likes: 14892,
+      },
+      {
+        id: 'c-5b-6',
+        authorId: 'cat-2',
+        authorName: 'VP Fluffington',
+        authorTitle: 'Senior Treaty Negotiator · Peace Accord Architect',
+        content: 'That was a STRATEGIC ASSET REALLOCATION and it was ANNOUNCED via meow. There was a meow. Several witnesses.',
+        timestamp: '2 hours 50 minutes ago',
+        likes: 18203,
+      },
+      {
+        id: 'c-5b-7',
+        authorId: 'friend-dih',
+        authorName: 'Dih',
+        authorTitle: 'Chill Specialist',
+        content: 'I\'m watching this live. I\'m not intervening. I\'m just watching.',
+        timestamp: '2 hours 48 minutes ago',
+        likes: 47291,
+      },
+      {
+        id: 'c-5b-8',
+        authorId: 'friend-avani',
+        authorName: 'Avani Kabra',
+        authorTitle: 'Chief Correctness Officer',
+        content: 'I flagged the legal ambiguity of the Informal Couch Summit at the time. Both of you owe me a consultation fee. I have the timestamps.',
+        timestamp: '2 hours 45 minutes ago',
+        likes: 3847,
+      },
+      {
+        id: 'c-5b-9',
+        authorId: 'friend-hema',
+        authorName: 'Hema Dassani',
+        authorTitle: 'Accidental Intelligence Lead',
+        content: 'wait are they okay?? also I think the hair Biscuit is referencing might actually be mine... should I not have said that 😬',
+        timestamp: '2 hours 40 minutes ago',
+        likes: 22034,
+      },
+    ],
+  },
+  {
     id: 'post-6',
     authorId: 'cat-2',
     author: seedCats[1],
