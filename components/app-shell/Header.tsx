@@ -19,8 +19,8 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 bg-seno-bg/90 backdrop-blur-md border-b border-seno-border">
-      {/* Gold top accent line */}
-      <div className="h-px bg-gradient-to-r from-transparent via-seno-gold to-transparent opacity-60" />
+      {/* Garnet-to-gold top accent line */}
+      <div className="h-px" style={{ background: 'linear-gradient(90deg, transparent, #9B2335 20%, #d4a017 60%, transparent)' }} />
       <div className="flex items-center justify-between px-4 h-14">
         {/* Logo */}
         <Link href="/profile" className="flex items-center gap-2 group">
@@ -68,7 +68,7 @@ export function Header() {
         {/* Right: notification bell */}
         <Link href="/messages" aria-label="Developments" className="relative p-2 rounded-xl hover:bg-seno-card-2 text-seno-muted hover:text-seno-text transition-colors">
           <Bell size={18} />
-          <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-seno-gold rounded-full" />
+          <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full" style={{ background: '#9B2335' }} />
         </Link>
       </div>
     </header>

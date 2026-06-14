@@ -93,16 +93,16 @@ export default function FeedPage() {
               onClick={() => setSelectedTag(isActive ? null : tag)}
               className="flex-shrink-0 rounded-xl px-3 py-2 text-left transition-all"
               style={{
-                background: isActive ? 'rgba(212,160,23,0.18)' : hot ? 'rgba(212,160,23,0.08)' : '#111111',
-                border: `1px solid ${isActive ? 'rgba(212,160,23,0.7)' : hot ? 'rgba(212,160,23,0.3)' : '#1e1e1e'}`,
+                background: isActive ? 'rgba(212,160,23,0.15)' : '#111111',
+                border: `1px solid ${isActive ? 'rgba(212,160,23,0.6)' : '#2a2a2a'}`,
                 transform: isActive ? 'scale(1.03)' : 'scale(1)',
               }}
             >
               <div className="flex items-center gap-1 mb-0.5">
-                {hot && <span style={{ color: '#d4a017', fontSize: 9 }}>🔥</span>}
-                <span className="text-[11px] font-bold" style={{ color: isActive ? '#d4a017' : hot ? '#e8b420' : '#f0ede4' }}>{tag}</span>
+                {hot && <span style={{ fontSize: 9 }}>🔥</span>}
+                <span className="text-[11px] font-bold" style={{ color: isActive ? '#d4a017' : '#f0ede4' }}>{tag}</span>
               </div>
-              <p className="text-[10px]" style={{ color: '#555555' }}>{isActive ? 'Tap to clear filter' : stat}</p>
+              <p className="text-[10px]" style={{ color: '#555555' }}>{isActive ? 'tap to clear' : stat}</p>
             </button>
           )
         })}

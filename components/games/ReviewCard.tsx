@@ -108,23 +108,23 @@ export function ReviewCard({ review }: ReviewCardProps) {
           </div>
         </div>
 
-        {/* Stat bars with min/max labels */}
-        <div className="space-y-3">
+        {/* Stat bars — 2 columns */}
+        <div className="grid grid-cols-2 gap-x-4 gap-y-3">
           {ratingConfig.map(({ key, label, minLabel, maxLabel }) => {
             const val = review.ratings[key] ?? 0
             const color = METRIC_COLORS[key] ?? '#888'
             return (
               <div key={key}>
                 <div className="flex items-center justify-between mb-1">
-                  <span style={{ color: '#888', fontSize: 11 }}>{label}</span>
-                  <span style={{ color, fontSize: 11, fontWeight: 700 }}>{val}/10</span>
+                  <span style={{ color: '#888', fontSize: 10 }}>{label}</span>
+                  <span style={{ color, fontSize: 10, fontWeight: 700 }}>{val}</span>
                 </div>
-                <div className="rounded-full overflow-hidden" style={{ height: 4, background: '#2a2a2a' }}>
+                <div className="rounded-full overflow-hidden" style={{ height: 3, background: '#2a2a2a' }}>
                   <div className="h-full rounded-full" style={{ width: `${(val / 10) * 100}%`, background: color }} />
                 </div>
                 <div className="flex justify-between mt-0.5">
-                  <span style={{ color: '#444', fontSize: 9 }}>{minLabel}</span>
-                  <span style={{ color: '#444', fontSize: 9 }}>{maxLabel}</span>
+                  <span style={{ color: '#444', fontSize: 8 }}>{minLabel}</span>
+                  <span style={{ color: '#444', fontSize: 8 }}>{maxLabel}</span>
                 </div>
               </div>
             )

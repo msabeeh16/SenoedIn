@@ -1,8 +1,8 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import type { Song } from '../../lib/types'
-import { X, Heart, ExternalLink } from 'lucide-react'
+import { X, Heart, ExternalLink, Play, Pause, Volume2 } from 'lucide-react'
 
 interface SwipeCardProps {
   song: Song
@@ -20,8 +20,60 @@ export function SwipeCard({ song, onEndorse, onDecline }: SwipeCardProps) {
   const startRef = useRef({ x: 0, y: 0 })
   const cardRef = useRef<HTMLDivElement>(null)
 
+  // Audio preview state
+  const audioRef = useRef<HTMLAudioElement | null>(null)
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [loadingPreview, setLoadingPreview] = useState(false)
+  const [progress, setProgress] = useState(0)
+
+  useEffect(() => {
+    // cleanup previous
+    if (audioRef.current) {
+      audioRef.current.pause()
+      audioRef.current = null
+    }
+    setPreviewUrl(null)
+    setIsPlaying(false)
+    setProgress(0)
+    setLoadingPreview(true)
+    fetch(`/api/music-preview?title=${encodeURIComponent(song.title)}&artist=${encodeURIComponent(song.artist)}`)
+      .then(r => r.json())
+      .then((d: { previewUrl: string | null }) => {
+        setPreviewUrl(d.previewUrl)
+        setLoadingPreview(false)
+      })
+      .catch(() => setLoadingPreview(false))
+  }, [song.id])
+
+  useEffect(() => {
+    return () => { audioRef.current?.pause() }
+  }, [])
+
+  const togglePlay = () => {
+    if (!previewUrl) return
+    if (!audioRef.current) {
+      const audio = new Audio(previewUrl)
+      audio.volume = 0.55
+      audio.addEventListener('ended', () => { setIsPlaying(false); setProgress(0) })
+      audio.addEventListener('timeupdate', () => {
+        if (audio.duration) setProgress(audio.currentTime / audio.duration)
+      })
+      audioRef.current = audio
+    }
+    if (isPlaying) {
+      audioRef.current.pause()
+      setIsPlaying(false)
+    } else {
+      audioRef.current.play().catch(() => {})
+      setIsPlaying(true)
+    }
+  }
+
   const triggerExit = (dir: 'left' | 'right') => {
     if (exiting) return
+    audioRef.current?.pause()
+    setIsPlaying(false)
     setExiting(dir)
     setDragX(dir === 'right' ? 600 : -600)
     setTimeout(() => {
@@ -152,6 +204,41 @@ export function SwipeCard({ song, onEndorse, onDecline }: SwipeCardProps) {
             Find {song.title} by {song.artist} on Spotify
             <ExternalLink size={12} />
           </a>
+        </div>
+
+        {/* Audio preview player */}
+        <div className="px-5 pb-3 pointer-events-auto">
+          <div className="flex items-center gap-2.5 px-3 py-2 rounded-xl" style={{ background: '#1a1a1a', border: '1px solid #2a2a2a' }}>
+            <button
+              onClick={togglePlay}
+              disabled={!previewUrl && !loadingPreview}
+              className="w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-all active:scale-95 disabled:opacity-30"
+              style={{ background: previewUrl ? '#d4a017' : '#2a2a2a' }}
+            >
+              {loadingPreview
+                ? <Volume2 size={12} style={{ color: '#888' }} />
+                : isPlaying
+                  ? <Pause size={12} style={{ color: '#0a0a0a' }} />
+                  : <Play  size={12} style={{ color: previewUrl ? '#0a0a0a' : '#888' }} />
+              }
+            </button>
+            <div className="flex-1 min-w-0">
+              {previewUrl ? (
+                <div>
+                  <div className="rounded-full overflow-hidden" style={{ height: 3, background: '#333' }}>
+                    <div className="h-full rounded-full transition-all" style={{ width: `${progress * 100}%`, background: '#d4a017' }} />
+                  </div>
+                  <p className="text-[9px] mt-0.5" style={{ color: '#555' }}>
+                    {isPlaying ? '▶ 30s preview' : 'tap to preview'}
+                  </p>
+                </div>
+              ) : (
+                <p className="text-[9px]" style={{ color: '#555' }}>
+                  {loadingPreview ? 'loading preview...' : 'no preview available'}
+                </p>
+              )}
+            </div>
+          </div>
         </div>
 
         {/* Action buttons */}

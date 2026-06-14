@@ -60,6 +60,7 @@ export default function ProfilePage() {
           </div>
 
           <h1 className="text-xl font-black text-seno-text">{p.name}</h1>
+          <p className="text-xs font-semibold mt-0.5" style={{ color: '#9B2335' }}>@sixseveno</p>
           <p className="text-sm text-seno-muted mt-0.5">{p.headline}</p>
 
           <div className="flex items-center flex-wrap gap-3 mt-2 text-xs text-seno-dim">

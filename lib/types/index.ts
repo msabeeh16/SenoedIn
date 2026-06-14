@@ -39,6 +39,16 @@ export interface RouteMarker {
   tooltip: string
 }
 
+export interface RouteComment {
+  id: string
+  authorName: string
+  authorTitle: string
+  content: string
+  timestamp: string
+  likes: number
+  gradeSuggestion?: string
+}
+
 export interface ClimbingReport {
   id: string
   imageUrl?: string
@@ -50,9 +60,11 @@ export interface ClimbingReport {
   crux: string
   beta: string
   dramaticReview: string
+  quote?: string
   safetyDisclaimer: string
   markers: RouteMarker[]
   timestamp: string
+  comments?: RouteComment[]
 }
 
 export interface RatingFields {

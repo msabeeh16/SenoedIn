@@ -57,7 +57,7 @@ All affected stakeholders have been notified via meow. Several have filed counte
 
 Change is difficult. Growth requires discomfort. The blanket is warm.
 
-#StrategicRelocation #ThermalAssetManagement #ExecutiveDecision`,
+#StrategicRelocation #BlanketRelocation #ThermalAssetManagement #ExecutiveDecision`,
     image: 'https://placecats.com/402/301',
     timestamp: '4 hours ago',
     endorsements: 1203,
@@ -128,7 +128,7 @@ The candidate initially seemed non-committal (they were on a deadline) but I per
 
 Pipeline looking strong. Multiple laps identified for Q4.
 
-#LapRelations #TerritoryAcquisition #CloseRateImprovement`,
+#LapRelations #LapAcquisition #TerritoryAcquisition #CloseRateImprovement`,
     image: 'https://placecats.com/401/300',
     timestamp: '8 hours ago',
     endorsements: 2847,
@@ -164,7 +164,7 @@ The sunbeam arrives at 2:47pm daily. I have leveraged this aggressively and with
 
 The roadmap is clear. The pillow is warm. We move forward.
 
-#AdvancedNapping #PerformanceMetrics #Grindset`,
+#AdvancedNapping #StrategicNapping #PerformanceMetrics #Grindset`,
     timestamp: '1 day ago',
     endorsements: 4203,
     escalations: 1021,
@@ -243,7 +243,7 @@ The audience (sleeping humans) initially failed to appreciate the nuance. By 3:1
 
 This is what peak stakeholder management looks like. Rate card available upon meow.
 
-#MidnightStrategy #VocalLeadership #StakeholderAlignment`,
+#MidnightStrategy #MidnightVocals #VocalLeadership #StakeholderAlignment`,
     image: 'https://placecats.com/403/302',
     timestamp: '2 days ago',
     endorsements: 5621,
